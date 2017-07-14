@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "name": "xaurumgamma",
+  "description": "XaurumGamma.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "url": "git+https://github.com/volkmaster/xaurumgamma.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/volkmaster/xaurumgamma/issues"
+  },
+  "author": {
+    "name": "Ziga Vucko",
+    "email": "ziga.vucko@gmail.com"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "postinstall": "npm run build",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "8.1.4"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.0",
+    "css-loader": "^0.28.4",
+    "express": "^4.15.3",
+    "file-loader": "^0.11.2",
+    "jquery": "^3.2.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.5",
+    "vue": "^2.3.3",
+    "vue-loader": "^12.2.1",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.4.5"
+  }
+}
