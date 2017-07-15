@@ -307,6 +307,11 @@ export default {
   mounted () {
     this.$nextTick(() => {
       $('.houses-wrapper').scroll(this.scroll)
+      $('.houses-wrapper')[0].addEventListener('wheel', function (event) {
+        this.scrollLeft -= event.wheelDeltaY
+        this.scrollLeft -= event.wheelDeltaX
+        event.preventDefault()
+      })
       window.addEventListener('resize', () => this.resize())
       setTimeout(() => this.positionBulletGroups(), 100)
     })
