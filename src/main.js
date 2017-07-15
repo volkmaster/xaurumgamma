@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import App from './components/App.vue'
-import AppMobile from './components/AppMobile.vue'
+import App from './components/desktop/App.vue'
+import AppMobile from './components/mobile/App.vue'
 import './utils/vueHelpers'
 
 let screenWidth = document.documentElement.clientWidth

@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+@import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .header-wrapper {
   & when (@debug = true) { border: 1px solid green; }
@@ -46,7 +46,7 @@
     <div class="logo-wrapper">
       <img class="logo" src="/assets/images/logo.png" @click="selectNavItem('home')"/>
     </div>
-    <div class="nav-item" :class="{ active: navItem.selected }" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">{{ navItem.label | uppercase }}</div>
+    <div class="nav-item" :class="{ active: navItem.active }" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">{{ navItem.label | uppercase }}</div>
   </div>
 </template>
 

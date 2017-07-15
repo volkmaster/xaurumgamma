@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+// @import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .header-wrapper {
   width            : 100vw;
@@ -19,7 +19,7 @@
 
       .logo-wrapper {
         width           : 60%;
-        padding         : 2vh 2vw;
+        padding         : 2vh 3vw;
         display         : flex;
         justify-content : flex-start;
 
@@ -30,7 +30,7 @@
       }
 
       #toggle {
-        margin-right    : 30px;
+        margin-right    : 4vh;
         display         : flex;
         justify-content : flex-end;
         font-size       : 70px;
@@ -41,17 +41,17 @@
 
     a { text-decoration: none; }
 
-    .list {
+    .nav-list {
       margin-left     : 2vw;
       padding         : 0;
       display         : none;
       list-style-type : none;
 
-      .item {
-        margin : 15px 0;
+      .nav-item {
+        margin : 2vh 0;
         cursor : pointer;
 
-        .text {
+        .nav-text {
           font-size : 40px;
           color     : @white;
 
@@ -70,13 +70,13 @@
         <div class="logo-wrapper">
           <img class="logo" src="/assets/images/logo.png" @click="selectNavItem('home')"/>
         </div>
-        <a href="#" id="toggle">
+        <a href="#" id="toggle" @click="slideNavList()">
           <i class="fa fa-bars"></i>
         </a>
       </div>
-      <ul class="list">
-        <li class="item" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">
-          <a class="text" :class="{ active: navItem.selected }" href="#">{{ navItem.label | uppercase}}</a>
+      <ul class="nav-list">
+        <li class="nav-item" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">
+          <a class="nav-text" :class="{ active: navItem.active }" href="#">{{ navItem.label | uppercase}}</a>
         </li>
       </ul>
     </nav>
@@ -98,15 +98,6 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-     $('nav a#toggle').click(function () {
-       $('ul').slideToggle(200, function () {
-         // Animation complete.
-       })
-     })
-    })
-  },
   methods: {
     selectNavItem (navItemLabel) {
       for (let i = 0; i < this.navItems.length; i++) {
@@ -118,8 +109,10 @@ export default {
       }
       this.$emit('change-page', navItemLabel)
 
-      let list = $('.list')[0]
-      list.style.display = 'none'
+      this.slideNavList()
+    },
+    slideNavList () {
+      $('.nav-list').slideToggle(200, () => {})
     }
   }
 }

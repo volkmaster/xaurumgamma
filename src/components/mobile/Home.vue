@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+// @import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
@@ -44,6 +44,7 @@
         .icon-title {
           margin-bottom : 1vh;
           display       : flex;
+          align-items   : center;
 
           .icon-wrapper {
             height: 100%;
@@ -98,13 +99,13 @@
 
 .fade-enter, .fade-leave-to { opacity: 0; }
 .fade-enter-active { transition: opacity 0.3s linear; }
-.fade-leave-active { transition: opacity 0.3s linear; }
 </style>
 
 <template>
   <div class="content-wrapper">
     <div class="houses-wrapper">
       <div class="house-wrapper" v-for="n in 5">
+        <img class="house" :src="'/assets/images/house' + n + '.png'" v-if="selectedBulletGroup !== n" @click="openDetailsDialog(n)"/>
         <transition name="fade">
           <div class="details-dialog-wrapper" v-show="selectedBulletGroup === n">
             <div class="details-dialog-item" v-for="bullet in bullets[n - 1].data">
@@ -120,11 +121,10 @@
               <div class="text">{{ bullet.text }}</div>
             </div>
             <div class="btn-close">
-              <img class="image" src="/assets/images/btn-close.png" @click="closeDetailsDialog()"/>
+              <img class="image" src="/assets/images/btn-close-gray.png" @click="closeDetailsDialog()"/>
             </div>
           </div>
         </transition>
-        <img class="house" :src="'/assets/images/house' + n + '.png'" v-if="selectedBulletGroup !== n" @click="openDetailsDialog(n)"/>
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+@import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
@@ -89,8 +89,9 @@
     justify-content  : center;
     flex-direction   : column;
     background-color : @black;
+    border           : 2px solid @gold;
 
-    .details-dialog {
+    .details-dialog-item {
       & when (@debug = true) { border: 1px solid red; }
 
       max-width : 70%;
@@ -143,7 +144,7 @@
         width  : 60%;
         height : 60%;
 
-        &:hover { filter: brightness(150%); }
+        &:hover { filter: brightness(50%); }
       }
     }
   }
@@ -174,7 +175,7 @@
     </div>
     <transition name="fade">
       <div class="details-dialog-wrapper" v-if="detailsDialogOpened">
-        <div class="details-dialog">
+        <div class="details-dialog-item">
           <div class="icon-title">
             <div class="icon-wrapper">
               <span class="fa-stack fa-lg">
@@ -187,7 +188,7 @@
           <div class="text">{{ selectedBullet.text }}</div>
         </div>
         <div class="btn-close">
-          <img class="image" src="/assets/images/btn-close.png" @click="closeDetailsDialog()"/>
+          <img class="image" src="/assets/images/btn-close-gold.png" @click="closeDetailsDialog()"/>
         </div>
       </div>
     </transition>

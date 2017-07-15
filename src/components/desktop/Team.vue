@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+@import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
@@ -14,15 +14,16 @@
   .content-wrapper-inner {
     width             : 100vw;
     height            : calc(100vw * 1.3184);
-    padding           : 50px;
+    padding           : 50px 150px 0 150px;
     background-size   : 100vw;
     background-image  : url('/assets/images/team.png');
     background-repeat : no-repeat;
   }
 
   .page-title {
-    font-size      : 35px;
     padding-bottom : 30px;
+    font-size      : 35px;
+    font-family    : @regular-font;
   }
 
   .page-content {

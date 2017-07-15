@@ -1,9 +1,9 @@
 <style lang="less">
-@import '../main';
+@import '../../main';
 </style>
 
 <style lang="less" scoped>
-@import (reference) '../main';
+@import (reference) '../../main';
 
 .wrapper {
   & when (@debug = true) { border: 1px solid black; }
@@ -40,13 +40,13 @@
 </template>
 
 <script>
-import NavHeader from '../components/NavHeader.vue'
-import Home from '../components/Home.vue'
-import ProjectOverview from '../components/ProjectOverview.vue'
-import GammaIco from '../components/GammaIco.vue'
-import GammaSurveillance from '../components/GammaSurveillance.vue'
-import RealTimeEconomy from '../components/RealTimeEconomy.vue'
-import Team from '../components/Team.vue'
+import NavHeader from './NavHeader.vue'
+import Home from './Home.vue'
+import ProjectOverview from './ProjectOverview.vue'
+import GammaIco from './GammaIco.vue'
+import GammaSurveillance from './GammaSurveillance.vue'
+import RealTimeEconomy from './RealTimeEconomy.vue'
+import Team from './Team.vue'
 
 export default {
   data () {
@@ -54,11 +54,6 @@ export default {
       currentPage: 'home'
     }
   },
-  created () {},
-  mounted () {
-    this.$nextTick(() => {})
-  },
-  computed: {},
   methods: {
     changePage (navItemLabel) {
       this.currentPage = navItemLabel
