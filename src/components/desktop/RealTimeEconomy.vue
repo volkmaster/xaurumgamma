@@ -29,7 +29,7 @@
         left     : 18%;
         top      : 30vh;
         width    : 27%;
-        color    : @black;
+        color    : @dark-gray;
       }
 
       .right {
@@ -49,12 +49,11 @@
       font-size       : 35px;
       font-family     : @regular-font;
       text-align      : center;
-      color           : @black;
-      text-decoration : underline;
+      color           : @white;
       cursor          : pointer;
       transition      : color 0.1s linear;
 
-      &:hover { color: @white; }
+      &:hover { text-decoration: underline; }
     }
 
     .page-content {

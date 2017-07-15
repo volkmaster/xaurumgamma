@@ -33,6 +33,7 @@
     color       : @white;
     font-size   : 16px;
     cursor      : pointer;
+    transition  : color 0.2s linear;
 
     &:hover { color: @purple; }
 
