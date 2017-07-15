@@ -52,7 +52,7 @@
   .houses-wrapper {
     position   : relative;
     height     : 100%;
-    overflow-x : scroll;
+    overflow-x : hidden;
     overflow-y : hidden;
 
     .bullet-group {
@@ -306,10 +306,16 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
+      let support = "onwheel" in document.createElement("div") ? "wheel" : // Modern browsers support "wheel"
+                    document.onmousewheel !== undefined ? "mousewheel" : // Webkit and IE support at least "mousewheel"
+                    "DOMMouseScroll" // let's assume that remaining browsers are older Firefox
+      console.log(support)
+
+
       $('.houses-wrapper').scroll(this.scroll)
       $('.houses-wrapper')[0].addEventListener('wheel', function (event) {
-        this.scrollLeft -= event.wheelDeltaY
-        this.scrollLeft -= event.wheelDeltaX
+        this.scrollLeft += event.deltaX
+        this.scrollLeft += event.deltaY
         event.preventDefault()
       })
       window.addEventListener('resize', () => this.resize())
