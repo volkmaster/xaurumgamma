@@ -299,7 +299,7 @@ export default {
     openDetailsDialog (bullet) {
       this.selectedBullet = bullet
     },
-    closeDetailsDialog (bullet) {
+    closeDetailsDialog () {
       this.selectedBullet = null
     }
   }

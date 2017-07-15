@@ -28,7 +28,7 @@
     .right {
       position: absolute;
       left: 52%;
-      top: 28.5vh;
+      top: 30vh;
       width: 30%;
     }
 
@@ -46,8 +46,9 @@
       }
 
       ul {
-        margin-top: 0.5vh;
-        list-style-type: square;
+        margin-top      : 0.5vh;
+        padding-left    : 15px;
+        list-style-type : square;
       }
       li {
         font-size   : 12px;
