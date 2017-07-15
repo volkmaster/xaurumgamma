@@ -255,7 +255,7 @@ export default {
         event.preventDefault()
       })
       window.addEventListener('resize', () => this.resize())
-      setTimeout(() => this.positionBulletGroups(), 1)
+      setTimeout(() => this.positionBulletGroups(), 100)
     })
   },
   beforeDestroy () {

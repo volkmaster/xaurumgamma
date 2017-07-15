@@ -61,7 +61,6 @@ export default {
   computed: {},
   methods: {
     changePage (navItemLabel) {
-      console.log(navItemLabel)
       this.currentPage = navItemLabel
     }
   },
