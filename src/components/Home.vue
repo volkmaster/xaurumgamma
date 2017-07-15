@@ -150,8 +150,8 @@
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
-.fade-enter-active { transition: opacity 0.3s ease-out; }
-.fade-leave-active { transition: opacity 0.3s ease-in; }
+.fade-enter-active { transition: opacity 0.3s linear; }
+.fade-leave-active { transition: opacity 0.3s linear; }
 </style>
 
 <template>
