@@ -8,29 +8,34 @@
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
 
-  width            : 100vw;
-  min-height       : 90vh;
+  width      : 100vw;
+  min-height : 90vh;
 
   .content-wrapper-inner {
     width             : 100vw;
     height            : calc(100vw * 1.3184);
-    padding           : 50px;
+    padding           : 50px 150px 0 150px;
     background-size   : 100vw;
     background-image  : url('/assets/images/gammaico.png');
     background-repeat : no-repeat;
 
     .page-title {
       font-size      : 35px;
-      padding-bottom : 30px;
+      font-family    : @regular-font;
     }
 
     .page-content {
       .content-title {
-        margin-top : 30px;
-        font-size  : 20px;
+        margin      : 40px 0;
+        font-size   : 25px;
+        font-family : @regular-font;
       }
 
       ul { list-style-type: square; }
+      li {
+        font-size   : 18px;
+        line-height : 40px;
+      }
     }
   }
 }

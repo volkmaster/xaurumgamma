@@ -16,14 +16,15 @@
   background-color : @black;
 
   .logo-wrapper {
+    height: 100%;
     display         : flex;
     align-items     : center;
     justify-content : center;
 
     .logo {
-      width  : 75%;
-      height : 75%;
-      cursor : pointer;
+      max-width  : 85%;
+      max-height : 85%;
+      cursor     : pointer;
     }
   }
 

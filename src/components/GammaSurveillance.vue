@@ -14,25 +14,33 @@
   .content-wrapper-inner {
     height            : calc(100vw * 1.3184);
     width             : 100vw;
-    padding           : 50px;
+    padding           : 50px 150px 0 150px;
     background-size   : 100vw;
     background-image  : url('/assets/images/gammasurveillance.png');
     background-repeat : no-repeat;
 
     .page-title {
       font-size      : 35px;
-      padding-bottom : 30px;
+      font-family    : @regular-font;
 
-      .live-streaming-text { font-size: 20px; }
+      .live-streaming-text {
+        margin-top : 30px;
+        font-size  : 20px;
+      }
     }
 
     .page-content {
       .content-title {
-        margin-top : 30px;
-        font-size  : 20px;
+        margin      : 30px 0;
+        font-size   : 25px;
+        font-family : @regular-font;
       }
 
       ul { list-style-type: square; }
+      li {
+        font-size   : 18px;
+        line-height : 40px;
+      }
     }
   }
 }
@@ -43,13 +51,9 @@
     <div class="content-wrapper-inner">
       <div class="page-title">
         Gamma Surveillance
-        <div class="live-streaming-text">Live streaming of the construction</div>
+        <div class="live-streaming-text">Live streaming of the construction (coming soon...)</div>
       </div>
       <div class="page-content">
-        Cam 1
-        <br/>
-        Cam 2
-
         <div class="content-title">Xaurum Street Details</div>
         <ul>
           <li>it will be a smart-street of luxury villas, with all the services payable in xaurum</li>
