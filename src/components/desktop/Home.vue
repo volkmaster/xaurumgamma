@@ -267,10 +267,12 @@ export default {
         event.preventDefault()
       })
       $('.content-wrapper').waitForImages(() => {
-        setTimeout(() => { this.loading = false }, 1000)
+        setTimeout(() => {
+          this.loading = false
+          setTimeout(() => this.positionBullets(), 100)
+        }, 1000)
       })
       window.addEventListener('resize', () => this.resize())
-      setTimeout(() => this.positionBullets(), 1100)
     })
   },
   beforeDestroy () {
