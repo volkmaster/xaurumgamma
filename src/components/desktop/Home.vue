@@ -254,9 +254,6 @@ export default {
         this.scrollLeft += event.deltaY
         event.preventDefault()
       })
-      $('.content-wrapper').waitForImages(() => {
-        setTimeout(() => { this.loading = false }, 1000)
-      })
       window.addEventListener('resize', () => this.resize())
       setTimeout(() => this.positionBullets(), 100)
     })

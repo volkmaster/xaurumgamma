@@ -187,7 +187,6 @@
 
 <script>
 import $ from 'jquery'
-import waitForImages from 'jquery.waitForImages'
 
 export default {
   data () {
