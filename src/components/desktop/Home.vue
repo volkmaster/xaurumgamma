@@ -6,7 +6,7 @@
 @import (reference) '../../main';
 
 .content-wrapper {
-  & when (@debug = true) { border: 1px solid blue; }
+  & when (@debug = true) { border: 1px solid black; }
 
   width  : 100vw;
   height : 90vh;
@@ -20,58 +20,41 @@
 
     &.fade { filter: blur(10px); }
 
-    .bullet-group {
+    .bullet {
       & when (@debug = true) { border: 1px solid red; }
 
-      position    : absolute;
-      top         : 5%;
-      display     : inline-block;
-      white-space : nowrap;
-      opacity     : 0;
-      transition  : opacity 0.3s linear;
+      position       : absolute;
+      top            : 5%;
+      width          : 10%;
+      display        : flex;
+      align-items    : center;
+      flex-direction : column;
+      cursor         : pointer;
+      opacity        : 0;
+      transition     : opacity 0.3s linear;
 
       &.fade  { opacity: 1; }
 
-      .bullet-wrapper {
-        padding-top: 3.5vh;
+      .icon-wrapper {
+        padding         : 1.5vh 0;
+        display         : flex;
+        justify-content : center;
 
-        &:first-child { padding-top: 0; }
+        .icon { font-size: 50px; }
+      }
 
-        .bullet {
-          display : flex;
-          cursor  : pointer;
+      .title {
+        & when (@debug = true) { border: 1px solid red; }
 
-          .icon-wrapper {
-            height: 100%;
+        width        : 100%;
+        font-family  : @regular-font;
+        font-size    : 16px;
+        text-align   : center;
+      }
 
-            i {
-              border        : 1px solid @black;
-              border-radius : 50%;
-              color         : @black;
-            }
-
-            .fa-stack-2x { opacity: 0; }
-          }
-
-          .title {
-            padding-left : 10px;
-            display      : flex;
-            align-items  : center;
-            cursor       : pointer;
-            font-family  : @regular-font;
-            font-size    : 22px;
-          }
-
-          &:hover {
-            i {
-              border        : 1px solid @purple;
-              border-radius : 50%;
-              color         : @purple;
-            }
-
-            .title { color: @purple; }
-          }
-        }
+      &:hover {
+        .icon  { color: @purple; }
+        .title { color: @purple; }
       }
     }
 
@@ -89,7 +72,7 @@
     justify-content  : center;
     flex-direction   : column;
     background-color : @black;
-    border           : 2px solid @gold;
+    border           : 2px solid @white;
 
     .details-dialog-item {
       & when (@debug = true) { border: 1px solid red; }
@@ -101,20 +84,13 @@
         margin-bottom : 5%;
         display       : flex;
 
-        .icon-wrapper {
-          height: 100%;
-
-          i {
-            border        : 1px solid @white;
-            border-radius : 50%;
-            color         : @white;
-          }
-
-          .fa-stack-2x { opacity: 0; }
+        .icon {
+          font-size : 40px;
+          color     : @white;
         }
 
         .title {
-          padding-left : 10px;
+          padding-left : 25px;
           display      : flex;
           align-items  : center;
           font-family  : @regular-font;
@@ -144,10 +120,18 @@
         width  : 60%;
         height : 60%;
 
-        &:hover { filter: brightness(50%); }
+        &:hover { filter: brightness(150%); }
       }
     }
   }
+}
+
+.hl {
+  & when (@debug = true) { border: 1px solid blue; }
+
+  position         : absolute;
+  top              : 0;
+  height           : 100%;
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
@@ -158,20 +142,16 @@
 <template>
   <div class="content-wrapper">
     <div class="houses-wrapper" :class="{ fade: detailsDialogOpened }">
-      <div class="bullet-group" :class="{ fade: showBulletGroup(bulletGroup) }" v-for="bulletGroup in bullets">
-        <div class="bullet-wrapper" v-for="bullet in bulletGroup.data">
-          <div class="bullet no-select" @click="openDetailsDialog(bullet)">
-            <div class="icon-wrapper">
-              <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i :class="'fa fa-' + bullet.image + ' fa-stack-1x'"></i>
-              </span>
-            </div>
-            <div class="title">{{ bullet.title }}</div>
+        <div class="bullet no-select" :class="{ fade: showBullet(bullet) }" v-for="bullet in bullets" @click="openDetailsDialog(bullet)">
+          <div class="icon-wrapper">
+            <span class="fa-stack fa-lg">
+              <i :class="'icon fa fa-' + bullet.data.image + ' fa-stack-1x'"></i>
+            </span>
           </div>
+          <div class="title">{{ bullet.data.title }}</div>
         </div>
-      </div>
       <img class="houses" src="/assets/images/houses.png"/>
+      <div class="hl" :style="{ left: n * 6.25 * 2.0734375 + '%' }" v-for="n in 15"></div>
     </div>
     <transition name="fade">
       <div class="details-dialog-wrapper" v-if="detailsDialogOpened">
@@ -179,16 +159,15 @@
           <div class="icon-title">
             <div class="icon-wrapper">
               <span class="fa-stack fa-lg">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i :class="'fa fa-' + selectedBullet.image + ' fa-stack-1x'"></i>
+                <i :class="'icon fa fa-' + selectedBullet.data.image + ' fa-stack-1x'"></i>
               </span>
             </div>
-            <div class="title">{{ selectedBullet.title }}</div>
+            <div class="title">{{ selectedBullet.data.title }}</div>
           </div>
-          <div class="text">{{ selectedBullet.text }}</div>
+          <div class="text">{{ selectedBullet.data.text }}</div>
         </div>
         <div class="btn-close">
-          <img class="image" src="/assets/images/btn-close-gold.png" @click="closeDetailsDialog()"/>
+          <img class="image" src="/assets/images/btn-close.png" @click="closeDetailsDialog()"/>
         </div>
       </div>
     </transition>
@@ -203,44 +182,64 @@ export default {
     return {
       bullets: [
         {
-          position: { min: 0, max: 10, actual: 10 },
-          data: [
-            { title: 'First crypto smart-street commonwealth', text: 'A private Xaurum street of rentable smart-houses.', image: 'home' },
-            { title: 'Crypto-asset', text: 'Connecting crypto with real-estate assets.', image: 'link' },
-            { title: 'Gamma platform', text: 'All economic activity will be transparently visible on the blockchain in real time. All objects will be represented on the blockchain.', image: 'pie-chart' }
-          ]
+          position: { min: 0, max: 0, actual: 3.8 },
+          data: { title: 'First crypto smart-street commonwealth', text: 'A private Xaurum street of rentable smart-houses.', image: 'home' }
         },
         {
-          position: { min: 10, max: 25, actual: 29 },
-          data: [
-            { title: 'Increasing Gamma value', text: 'Half of all the profit is transfered to Xaurum Gamma commonwealth, therefore increasing gamma (XGM) value with xaurum (XAUR).', image: 'bar-chart' },
-            { title: 'Gamma growth', text: 'Second part of the profit is reinvested in new real-estate properties, therefore creating new sources of profit.', image: 'line-chart' },
-            { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens.', image: 'check' },
-          ]
+          position: { min: 0, max: 0, actual: 10.1 },
+          data: { title: 'Crypto-asset', text: 'Connecting crypto with real-estate assets.', image: 'link' }
         },
         {
-          position: { min: 25, max: 40, actual: 44 },
-          data: [
-            { title: 'Recapitalization', text: 'When the project will be recapitalized, gamma market price will be used for its valuation, increasing the ratio of all gamma tokens. New gamma (XGM) will be issued based on the market price, using the Xaurum growth concept.', image: 'exchange' },
-            { title: 'Increasing Xaurum value', text: 'All economic activity of the Xaurum smart-street is increasing the gold base of Xaurum. Even the smallest purchase increases the Xaurum Gamma valuation per token and adds new gold to Xaurum.', image: 'line-chart' },
-            { title: 'Xaurum economy', text: 'Xaurum smart-street accepts only xaurum as payment for all services. It makes use of the benefits of all technological innovation, with an emphasis on crypto.', image: 'money' },
-          ]
+          position: { min: 0, max: 0, actual: 16.35 },
+          data: { title: 'Gamma platform', text: 'All economic activity will be transparently visible on the blockchain in real time. All objects will be represented on the blockchain.', image: 'pie-chart' }
         },
         {
-          position: { min: 40, max: 50, actual: 60 },
-          data: [
-            { title: 'Luxury crypto village', text: 'All the smart-houses are modern luxury villas in a prime tourist location with supreme infrastructure.', image: 'building' },
-            { title: 'Automated services', text: 'Drone and robot delivery of goods and services.', image: 'android' },
-            { title: 'Extravagant services', text: 'High-end cars, yachts and boats.', image: 'car' },
-          ]
+          position: { min: 0, max: 0, actual: 22.5 },
+          data: { title: 'Increasing Gamma value', text: 'Half of all the profit is transfered to Xaurum Gamma commonwealth, therefore increasing gamma (XGM) value with xaurum (XAUR).', image: 'bar-chart' }
         },
         {
-          position: { min: 50, max: 100, actual: 87 },
-          data: [
-            { title: 'Proof of development', text: 'Live streaming of the construction.', image: 'video-camera' },
-            { title: 'Private street', text: 'First crypto smart-street with private access.', image: 'user' },
-            { title: 'Events', text: 'Providing lodging for important guests and event organization.', image: 'calendar-o' },
-          ]
+          position: { min: 0, max: 0, actual: 28.75 },
+          data: { title: 'Gamma growth', text: 'Second part of the profit is reinvested in new real-estate properties, therefore creating new sources of profit.', image: 'line-chart' }
+        },
+        {
+          position: { min: 0, max: 0, actual: 35 },
+          data: { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens.', image: 'check' }
+        },
+        {
+          position: { min: 0, max: 0, actual: 41.35 },
+          data: { title: 'Recapitalization', text: 'When the project will be recapitalized, gamma market price will be used for its valuation, increasing the ratio of all gamma tokens. New gamma (XGM) will be issued based on the market price, using the Xaurum growth concept.', image: 'exchange' }
+        },
+        {
+          position: { min: 6, max: 0, actual: 47.5 },
+          data: { title: 'Increasing Xaurum value', text: 'All economic activity of the Xaurum smart-street is increasing the gold base of Xaurum. Even the smallest purchase increases the Xaurum Gamma valuation per token and adds new gold to Xaurum.', image: 'line-chart' }
+        },
+        {
+          position: { min: 12, max: 0, actual: 53.75 },
+          data: { title: 'Xaurum economy', text: 'Xaurum smart-street accepts only xaurum as payment for all services. It makes use of the benefits of all technological innovation, with an emphasis on crypto.', image: 'money' }
+        },
+        {
+          position: { min: 18, max: 0, actual: 60.15 },
+          data: { title: 'Luxury crypto village', text: 'All the smart-houses are modern luxury villas in a prime tourist location with supreme infrastructure.', image: 'building' }
+        },
+        {
+          position: { min: 24, max: 0, actual: 66.36 },
+          data: { title: 'Automated services', text: 'Drone and robot delivery of goods and services.', image: 'android' }
+        },
+        {
+          position: { min: 30, max: 0, actual: 72.45 },
+          data: { title: 'Extravagant services', text: 'High-end cars, yachts and boats.', image: 'car' }
+        },
+        {
+          position: { min: 37, max: 0, actual: 78.9 },
+          data: { title: 'Events', text: 'Providing lodging for important guests and event organization.', image: 'calendar-o' }
+        },
+        {
+          position: { min: 43, max: 0, actual: 85.14 },
+          data: { title: 'Proof of development', text: 'Live streaming of the construction.', image: 'video-camera' }
+        },
+        {
+          position: { min: 49, max: 0, actual: 91.3 },
+          data: { title: 'Private street', text: 'First crypto smart-street with private access.', image: 'user' }
         }
       ],
       scrollRatio: 0,
@@ -255,8 +254,11 @@ export default {
         this.scrollLeft += event.deltaY
         event.preventDefault()
       })
+      $('.content-wrapper').waitForImages(() => {
+        setTimeout(() => { this.loading = false }, 1000)
+      })
       window.addEventListener('resize', () => this.resize())
-      setTimeout(() => this.positionBulletGroups(), 100)
+      setTimeout(() => this.positionBullets(), 100)
     })
   },
   beforeDestroy () {
@@ -278,24 +280,24 @@ export default {
       this.closeDetailsDialog()
     },
     resize () {
-      this.positionBulletGroups()
+      this.positionBullets()
     },
-    positionBulletGroups () {
+    positionBullets () {
       let houses = $('.houses')[0]
       if (houses) {
         let imageWidth = houses.clientWidth
         let screenWidth = document.documentElement.clientWidth
         let ratio = imageWidth / screenWidth
 
-        let bulletGroups = $('.bullet-group')
-        for (let i = 0; i < bulletGroups.length; i++) {
-          bulletGroups[i].style.left = `${ratio * this.bullets[i].position.actual}%`
+        let bullets = $('.bullet')
+        for (let i = 0; i < bullets.length; i++) {
+          bullets[i].style.left = `${ratio * this.bullets[i].position.actual}%`
         }
       }
     },
-    showBulletGroup (bulletGroup) {
+    showBullet (bullet) {
       let ratio = this.scrollRatio * 100
-      return ratio >= bulletGroup.position.min && ratio < bulletGroup.position.max
+      return ratio >= bullet.position.min && ratio < (bullet.position.actual - 1.5)
     },
     openDetailsDialog (bullet) {
       this.selectedBullet = bullet

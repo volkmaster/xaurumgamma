@@ -8,8 +8,16 @@
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
 
-  width      : 100vw;
-  min-height : 90vh;
+  width            : 100vw;
+  min-height       : 90vh;
+  background-color : @black;
+
+  .loader-wrapper {
+    height          : 80vh;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+  }
 
   .content-wrapper-inner {
     height            : calc(100vw * 1.3184);
@@ -20,18 +28,21 @@
     background-repeat : no-repeat;
 
     .page-title {
-      font-size      : 35px;
-      font-family    : @regular-font;
+      font-size   : 35px;
+      font-family : @bold-font;
 
       .live-streaming-text {
-        margin-top : 30px;
-        font-size  : 20px;
+        margin      : 30px 0;
+        font-size   : 20px;
+        font-family : @light-font;
+
+        &.italic { font-style: italic; }
       }
     }
 
     .page-content {
       .content-title {
-        margin      : 30px 0;
+        margin      : 40px 0;
         font-size   : 25px;
         font-family : @regular-font;
       }
@@ -40,8 +51,11 @@
         list-style-type: square;
 
         .item {
-          font-size   : 18px;
-          line-height : 40px;
+          padding-bottom : 30px;
+          font-size      : 18px;
+          line-height    : 22px;
+
+          &:last-child { padding-bottom: 0; }
         }
       }
     }
@@ -51,10 +65,13 @@
 
 <template>
   <div class="content-wrapper">
-    <div class="content-wrapper-inner">
+    <div class="loader-wrapper" v-show="loading">
+      <img src="/assets/images/loader.svg"/>
+    </div>
+    <div class="content-wrapper-inner" v-show="!loading">
       <div class="page-title">
         Gamma Surveillance
-        <div class="live-streaming-text">Live streaming of the construction (coming soon...)</div>
+        <div class="live-streaming-text italic">Live streaming of the construction (coming soon...)</div>
       </div>
       <div class="page-content">
         <div class="content-title">Xaurum Street Details</div>
@@ -79,23 +96,36 @@
           <li class="item">we have selected crucial managing and oversight partners to become board members of the project</li>
           <li class="item">if the project does not succeed, the real-estates will be sold and distributed to gamma users in xaurum</li>
         </ul>
+        <!--
         <div class="content-title">Legal</div>
         <div class="content-title">Gamma Documentation</div>
+        -->
         <div class="content-title">Gamma Companies</div>
-        <p>
-          Gamma gradnje d. o. o.
-          <br/>
-          Xaurum Gamma trust A. G.
-        </p>
+        <ul class="item-list">
+          <li class="item">Gamma gradnje d. o. o.</li>
+          <li class="item">Xaurum Gamma trust A. G.</li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
+import waitForImages from 'jquery.waitForImages'
+
 export default {
   data () {
-    return {}
+    return {
+      loading: true
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      $('.content-wrapper').waitForImages(() => {
+        setTimeout(() => { this.loading = false }, 1000)
+      })
+    })
   }
 }
 </script>

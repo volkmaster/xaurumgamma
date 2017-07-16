@@ -121,7 +121,7 @@
               <div class="text">{{ bullet.text }}</div>
             </div>
             <div class="btn-close">
-              <img class="image" src="/assets/images/btn-close-gray.png" @click="closeDetailsDialog()"/>
+              <img class="image" src="/assets/images/btn-close.png" @click="closeDetailsDialog()"/>
             </div>
           </div>
         </transition>

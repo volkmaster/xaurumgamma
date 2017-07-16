@@ -8,8 +8,16 @@
 .content-wrapper {
   & when (@debug = true) { border: 1px solid blue; }
 
-  width      : 100vw;
-  min-height : 90vh;
+  width            : 100vw;
+  min-height       : 90vh;
+  background-color : @black;
+
+  .loader-wrapper {
+    height          : 80vh;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+  }
 
   .content-wrapper-inner {
     width             : 100vw;
@@ -20,8 +28,8 @@
     background-repeat : no-repeat;
 
     .page-title {
-      font-size      : 35px;
-      font-family    : @regular-font;
+      font-size   : 35px;
+      font-family : @bold-font;
     }
 
     .page-content {
@@ -35,8 +43,11 @@
         list-style-type: square;
 
         .item {
-          font-size   : 18px;
-          line-height : 40px;
+          padding-bottom : 30px;
+          font-size      : 18px;
+          line-height    : 22px;
+
+          &:last-child { padding-bottom: 0; }
         }
       }
     }
@@ -46,7 +57,10 @@
 
 <template>
   <div class="content-wrapper">
-    <div class="content-wrapper-inner">
+    <div class="loader-wrapper" v-show="loading">
+      <img src="/assets/images/loader.svg"/>
+    </div>
+    <div class="content-wrapper-inner" v-show="!loading">
       <div class="page-title">
         Gamma ICO
       </div>
@@ -77,9 +91,21 @@
 </template>
 
 <script>
+import $ from 'jquery'
+import waitForImages from 'jquery.waitForImages'
+
 export default {
   data () {
-    return {}
+    return {
+      loading: true
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      $('.content-wrapper').waitForImages(() => {
+        setTimeout(() => { this.loading = false }, 1000)
+      })
+    })
   }
 }
 </script>

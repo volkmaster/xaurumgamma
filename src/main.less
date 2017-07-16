@@ -1,19 +1,25 @@
 @font-face {
-  font-family : 'light';
-  src         : url('/assets/fonts/light.woff2') format('woff2');
+  font-family : 'Montserrat Light';
+  src         : url('/assets/fonts/Montserrat-Light.woff2') format('woff2');
 }
 
 @font-face {
-  font-family : 'regular';
-  src         : url('/assets/fonts/regular.woff2') format('woff2');
+  font-family : 'Raleway Medium';
+  src         : url('/assets/fonts/Raleway-Medium.woff2') format('woff2');
 }
 
-@light-font   : 'light';
-@regular-font : 'regular';
+@font-face {
+  font-family : 'Raleway Bold';
+  src         : url('/assets/fonts/Raleway-Bold.woff2') format('woff2');
+}
+
+@light-font   : 'Montserrat Light';
+@regular-font : 'Raleway Medium';
+@bold-font    : 'Raleway Bold';
 
 @black     : rgb(0, 0, 0);
 @white     : rgb(255, 255, 255);
-@gray      : #64686d;
+@gray      : rgb(128,128,128);
 @dark-gray : rgb(80, 80, 80);
 @purple    : #a04095;
 @gold      : rgb(255, 215, 0);
@@ -41,31 +47,5 @@ body {
 button:focus { outline: 0; }
 
 img { user-select: none; }
-
-.breakpoint-2048(@rules) {
-  @media only screen and (min-width: 2049px) { @rules(); }
-}
-.breakpoint-2048-1920(@rules) {
-  @media only screen and (min-width: 1921px) and (max-width: 2048px) { @rules(); }
-}
-.breakpoint-1920-1600(@rules) {
-  @media only screen and (min-width: 1601px) and (max-width: 1920px) { @rules(); }
-}
-.breakpoint-1600-1440(@rules) {
-  @media only screen and (min-width: 1441px) and (max-width: 1600px) { @rules(); }
-}
-.breakpoint-1440-1280(@rules) {
-  @media only screen and (min-width: 1281px) and (max-width: 1440px) { @rules(); }
-}
-.breakpoint-1280-1024(@rules) {
-  @media only screen and (min-width: 1025px) and (max-width: 1280px) { @rules(); }
-}
-.breakpoint-1024(@rules) {
-  @media only screen and (max-width: 1024px) { @rules(); }
-}
-
-.breakpoint-lte-1680(@rules) {
-  @media only screen and (max-width: 1680px) { @rules(); }
-}
 
 @debug: false;

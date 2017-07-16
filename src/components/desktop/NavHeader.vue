@@ -32,6 +32,7 @@
     margin-left : 30px;
     color       : @white;
     font-size   : 16px;
+    font-family : @regular-font;
     cursor      : pointer;
     transition  : color 0.2s linear;
 
