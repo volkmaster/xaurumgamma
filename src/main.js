@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import 'jquery.waitForImages'
 import App from './components/desktop/App.vue'
 import AppMobile from './components/mobile/App.vue'
 import './utils/vueHelpers'

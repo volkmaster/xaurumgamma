@@ -8,8 +8,16 @@
 .content-wrapper {
   & when (@debug = true) { border: 1px solid black; }
 
-  width  : 100vw;
-  height : 90vh;
+  width            : 100vw;
+  height           : 90vh;
+  background-color : @black;
+
+  .loader-wrapper {
+    height          : 80vh;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+  }
 
   .houses-wrapper {
     position   : relative;
@@ -141,7 +149,10 @@
 
 <template>
   <div class="content-wrapper">
-    <div class="houses-wrapper" :class="{ fade: detailsDialogOpened }">
+    <div class="loader-wrapper" v-show="loading">
+      <img src="/assets/images/loader.svg"/>
+    </div>
+    <div class="houses-wrapper" :class="{ fade: detailsDialogOpened }" v-show="!loading">
         <div class="bullet no-select" :class="{ fade: showBullet(bullet) }" v-for="bullet in bullets" @click="openDetailsDialog(bullet)">
           <div class="icon-wrapper">
             <span class="fa-stack fa-lg">
@@ -180,6 +191,7 @@ import $ from 'jquery'
 export default {
   data () {
     return {
+      loading: true,
       bullets: [
         {
           position: { min: 0, max: 0, actual: 3.8 },
@@ -254,8 +266,11 @@ export default {
         this.scrollLeft += event.deltaY
         event.preventDefault()
       })
+      $('.content-wrapper').waitForImages(() => {
+        setTimeout(() => { this.loading = false }, 1000)
+      })
       window.addEventListener('resize', () => this.resize())
-      setTimeout(() => this.positionBullets(), 100)
+      setTimeout(() => this.positionBullets(), 1100)
     })
   },
   beforeDestroy () {

@@ -51,6 +51,7 @@ import GammaIco from './GammaIco.vue'
 import GammaSurveillance from './GammaSurveillance.vue'
 import RealTimeEconomy from './RealTimeEconomy.vue'
 import Team from './Team.vue'
+import 'jquery.waitforimages'
 
 export default {
   data () {
