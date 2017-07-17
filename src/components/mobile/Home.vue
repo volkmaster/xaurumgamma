@@ -46,24 +46,12 @@
           display       : flex;
           align-items   : center;
 
-          .icon-wrapper {
-            height: 100%;
-
-            i {
-              border        : 1px solid @white;
-              border-radius : 50%;
-              color         : @white;
-            }
-
-            .fa-stack-2x { opacity: 0; }
-          }
-
           .title {
-            padding-left : 10px;
+            padding-left : 4vw;
             display      : flex;
             align-items  : center;
             font-family  : @regular-font;
-            font-size    : 40px;
+            font-size    : 45px;
             color        : @white;
           }
         }
@@ -71,7 +59,7 @@
         .text {
           color       : @gray;
           font-family : @light-font;
-          font-size   : 30px;
+          font-size   : 35px;
           text-align  : justify;
         }
       }
@@ -98,22 +86,26 @@
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
-.fade-enter-active { transition: opacity 0.3s linear; }
+.fade-enter-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
 </style>
 
 <template>
   <div class="content-wrapper">
     <div class="houses-wrapper">
       <div class="house-wrapper" v-for="n in 5">
-        <img class="house" :src="'/assets/images/house' + n + '.png'" v-if="selectedBulletGroup !== n" @click="openDetailsDialog(n)"/>
+        <img class="house" :src="'/assets/images/house' + n + '.png'" v-show="selectedBulletGroup !== n" @click="openDetailsDialog(n)"/>
         <transition name="fade">
           <div class="details-dialog-wrapper" v-show="selectedBulletGroup === n">
             <div class="details-dialog-item" v-for="bullet in bullets[n - 1].data">
               <div class="icon-title">
                 <div class="icon-wrapper">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle-thin fa-stack-2x"></i>
-                    <i :class="'fa fa-' + bullet.image + ' fa-stack-1x'"></i>
+                  <span>
+                    <i :class="'fa fa-' + bullet.image + ' fa-5x'"></i>
                   </span>
                 </div>
                 <div class="title">{{ bullet.title }}</div>
@@ -131,6 +123,8 @@
 </template>
 
 <script>
+import $ from 'jquery'
+
 export default {
   data () {
     return {
@@ -146,7 +140,7 @@ export default {
           data: [
             { title: 'Increasing Gamma value', text: 'Half of all the profit is transfered to Xaurum Gamma commonwealth, therefore increasing gamma (XGM) value with xaurum (XAUR).', image: 'bar-chart' },
             { title: 'Gamma growth', text: 'Second part of the profit is reinvested in new real-estate properties, therefore creating new sources of profit.', image: 'line-chart' },
-            { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens.', image: 'check' },
+            { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens. Gamma (XGM) can be melted (or directly exchanged and provably destroyed) for a villa on the Xaurum smart-street, for a value determined by the number of XGM at the start of the project.', image: 'check' },
           ]
         },
         {
@@ -175,8 +169,14 @@ export default {
     }
   },
   methods: {
+    positionDetailsDialog (n) {
+      let imageHeight = $('.house').height() + 30
+      $('body').scrollTop((n - 1) * imageHeight)
+
+    },
     openDetailsDialog (n) {
       this.selectedBulletGroup = n
+      this.$nextTick(() => this.positionDetailsDialog(n))
     },
     closeDetailsDialog () {
       this.selectedBulletGroup = -1

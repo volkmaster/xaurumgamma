@@ -34,8 +34,9 @@
   }
 
   .page-content {
-    margin-top : 40px;
-    display    : flex;
+    margin-top      : 40px;
+    display         : flex;
+    justify-content : center;
 
     .team-member {
       position        : relative;
@@ -47,9 +48,12 @@
       &:last-child  { padding-right: 0; }
 
       .team-member-img {
-        width        : 250px;
-        height       : auto;
-        transition   : filter 0.1s ease-in;
+        width              : 250px;
+        height             : auto;
+        -webkit-transition : filter 0.1s ease-in;
+        -moz-transition    : filter 0.1s ease-in;
+        -o-transition      : filter 0.1s ease-in;
+        transition         : filter 0.1s ease-in;
 
         &.fade { filter: blur(3px) brightness(70%); }
       }
@@ -90,7 +94,7 @@
       <div class="page-content">
         <div class="team-member" v-for="teamMember in teamMembers" @mouseenter="teamMember.active = true" @mouseleave="teamMember.active = false">
           <img class="team-member-img" :class="{ fade: teamMember.active }" :src="'/assets/images/' + teamMember.image + '.jpg'" />
-          <div class="team-member-text" v-show="teamMember.active">
+          <div class="team-member-text" v-show="!teamMember.active">
             <div class="team-member-name">
               {{ teamMember.name }}
             </div>

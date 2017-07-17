@@ -20,35 +20,45 @@
   }
 
   .houses-wrapper {
-    position   : relative;
-    height     : 100%;
-    overflow-x : hidden;
-    overflow-y : hidden;
-    transition : filter 0.3s linear;
+    position           : relative;
+    height             : 100%;
+    overflow-x         : hidden;
+    overflow-y         : hidden;
+    -webkit-transition : filter 0.3s linear;
+    -moz-transition    : filter 0.3s linear;
+    -o-transition      : filter 0.3s linear;
+    transition         : filter 0.3s linear;
 
     &.fade { filter: blur(10px); }
 
     .bullet {
       & when (@debug = true) { border: 1px solid red; }
 
-      position       : absolute;
-      top            : 5%;
-      width          : 10%;
-      display        : flex;
-      align-items    : center;
-      flex-direction : column;
-      cursor         : pointer;
-      opacity        : 0;
-      transition     : opacity 0.3s linear;
+      position           : absolute;
+      top                : 5%;
+      width              : 13%;
+      display            : flex;
+      align-items        : center;
+      flex-direction     : column;
+      cursor             : pointer;
+      opacity            : 0;
+      -webkit-transition : opacity 0.3s linear;
+      -moz-transition    : opacity 0.3s linear;
+      -o-transition      : opacity 0.3s linear;
+      transition         : opacity 0.3s linear;
 
       &.fade  { opacity: 1; }
 
       .icon-wrapper {
+        & when (@debug = true) { border: 1px solid blue; }
+
         padding         : 1.5vh 0;
         display         : flex;
         justify-content : center;
 
-        .icon { font-size: 50px; }
+        .icon {
+          & when (@debug = true) { border: 1px solid green; }
+        }
       }
 
       .title {
@@ -56,8 +66,14 @@
 
         width        : 100%;
         font-family  : @regular-font;
-        font-size    : 16px;
         text-align   : center;
+
+        .breakpoint-gte-2048( { font-size: 34px; });
+        .breakpoint-1920-2048({ font-size: 28px; });
+        .breakpoint-1680-1920({ font-size: 24px; });
+        .breakpoint-1440-1680({ font-size: 20px; });
+        .breakpoint-1280-1440({ font-size: 16px; });
+        .breakpoint-lt-1280(  { font-size: 16px; });
       }
 
       &:hover {
@@ -74,8 +90,7 @@
     left             : 50%;
     top              : 50%;
     transform        : translate(-50%, -50%);
-    width            : 700px;
-    height           : 300px;
+    padding          : 6vh 2vw;
     display          : flex;
     justify-content  : center;
     flex-direction   : column;
@@ -92,26 +107,35 @@
         margin-bottom : 5%;
         display       : flex;
 
-        .icon {
-          font-size : 40px;
-          color     : @white;
-        }
+        .icon { color: @white; }
 
         .title {
           padding-left : 25px;
           display      : flex;
           align-items  : center;
           font-family  : @regular-font;
-          font-size    : 25px;
           color        : @white;
+
+          .breakpoint-gte-2048( { font-size: 45px; });
+          .breakpoint-1920-2048({ font-size: 40px; });
+          .breakpoint-1680-1920({ font-size: 35px; });
+          .breakpoint-1440-1680({ font-size: 30px; });
+          .breakpoint-1280-1440({ font-size: 25px; });
+          .breakpoint-lt-1280(  { font-size: 20px; });
         }
       }
 
       .text {
         color       : @gray;
         font-family : @light-font;
-        font-size   : 20px;
         text-align  : justify;
+
+        .breakpoint-gte-2048( { font-size: 32px; });
+        .breakpoint-1920-2048({ font-size: 29px; });
+        .breakpoint-1680-1920({ font-size: 26px; });
+        .breakpoint-1440-1680({ font-size: 23px; });
+        .breakpoint-1280-1440({ font-size: 20px; });
+        .breakpoint-lt-1280(  { font-size: 17px; });
       }
     }
 
@@ -143,8 +167,18 @@
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
-.fade-enter-active { transition: opacity 0.3s linear; }
-.fade-leave-active { transition: opacity 0.3s linear; }
+.fade-enter-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
+.fade-leave-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
 </style>
 
 <template>
@@ -155,8 +189,8 @@
     <div class="houses-wrapper" :class="{ fade: detailsDialogOpened }" v-show="!loading">
         <div class="bullet no-select" :class="{ fade: showBullet(bullet) }" v-for="bullet in bullets" @click="openDetailsDialog(bullet)">
           <div class="icon-wrapper">
-            <span class="fa-stack fa-lg">
-              <i :class="'icon fa fa-' + bullet.data.image + ' fa-stack-1x'"></i>
+            <span>
+              <i :class="'icon fa fa-' + bullet.data.image + ' fa-' + iconSize"></i>
             </span>
           </div>
           <div class="title">{{ bullet.data.title }}</div>
@@ -169,8 +203,8 @@
         <div class="details-dialog-item">
           <div class="icon-title">
             <div class="icon-wrapper">
-              <span class="fa-stack fa-lg">
-                <i :class="'icon fa fa-' + selectedBullet.data.image + ' fa-stack-1x'"></i>
+              <span>
+                <i :class="'icon fa fa-' + selectedBullet.data.image + ' fa-' + iconSize"></i>
               </span>
             </div>
             <div class="title">{{ selectedBullet.data.title }}</div>
@@ -215,7 +249,7 @@ export default {
         },
         {
           position: { min: 0, max: 0, actual: 35 },
-          data: { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens.', image: 'check' }
+          data: { title: 'Gamma guaranteed value', text: 'Gamma is always usable for renting at ICO price or higher, when its ratio is increased. Gamma used in this way is destroyed, increasing the ratio of remaining gamma tokens. Gamma (XGM) can be melted (or directly exchanged and provably destroyed) for a villa on the Xaurum smart-street, for a value determined by the number of XGM at the start of the project.', image: 'check' }
         },
         {
           position: { min: 0, max: 0, actual: 41.35 },
@@ -255,7 +289,8 @@ export default {
         }
       ],
       scrollRatio: 0,
-      selectedBullet: null
+      selectedBullet: null,
+      iconSize: 'lg'
     }
   },
   mounted () {
@@ -269,7 +304,10 @@ export default {
       $('.content-wrapper').waitForImages(() => {
         setTimeout(() => {
           this.loading = false
-          setTimeout(() => this.positionBullets(), 100)
+          setTimeout(() => {
+            this.sizeIcons()
+            this.positionBullets()
+          }, 100)
         }, 1000)
       })
       window.addEventListener('resize', () => this.resize())
@@ -290,11 +328,26 @@ export default {
       let scroll = housesWrapper.scrollLeft
       let imageWidth = houses.clientWidth
       this.scrollRatio = scroll / imageWidth
-
-      this.closeDetailsDialog()
     },
     resize () {
+      this.sizeIcons()
       this.positionBullets()
+    },
+    sizeIcons () {
+      let width = document.documentElement.clientWidth
+      if (width >= 2048) {
+        this.iconSize = '5x'
+      } else if (width < 2048 && width >= 1920) {
+        this.iconSize = '4x'
+      } else if (width < 1920 && width >= 1680) {
+        this.iconSize = '4x'
+      } else if (width < 1680 && width >= 1440) {
+        this.iconSize = '4x'
+      } else if (width < 1440 && width >= 1280) {
+        this.iconSize = '3x'
+      } else if (width < 1280) {
+        this.iconSize = '3x'
+      }
     },
     positionBullets () {
       let houses = $('.houses')[0]
@@ -314,7 +367,9 @@ export default {
       return ratio >= bullet.position.min && ratio < (bullet.position.actual - 1.5)
     },
     openDetailsDialog (bullet) {
-      this.selectedBullet = bullet
+      if (!this.detailsDialogOpened) {
+        this.selectedBullet = bullet
+      }
     },
     closeDetailsDialog () {
       this.selectedBullet = null

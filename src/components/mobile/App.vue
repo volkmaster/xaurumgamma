@@ -8,8 +8,7 @@
 .wrapper {
   & when (@debug = true) { border: 1px solid black; }
 
-  width            : 100vw;
-  background-color : @black;
+  width: 100vw;
 }
 </style>
 
@@ -36,11 +35,15 @@
     <team
       v-else-if="currentPage === 'team'">
     </team>
+    <nav-footer
+      v-if="currentPage !== 'home'">
+    </nav-footer>
   </div>
 </template>
 
 <script>
 import NavHeader from './NavHeader.vue'
+import NavFooter from './NavFooter.vue'
 import Home from './Home.vue'
 import ProjectOverview from './ProjectOverview.vue'
 import GammaIco from './GammaIco.vue'
@@ -61,6 +64,7 @@ export default {
   },
   components: {
     navHeader: NavHeader,
+    navFooter: NavFooter,
     home: Home,
     projectOverview: ProjectOverview,
     gammaIco: GammaIco,

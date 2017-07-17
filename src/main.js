@@ -4,7 +4,12 @@ import AppMobile from './components/mobile/App.vue'
 import './utils/vueHelpers'
 
 let screenWidth = document.documentElement.clientWidth
-let rootComponent = screenWidth < 1280 ? AppMobile : App
+let screenHeight = document.documentElement.clientHeight
+let rootComponent = App
+// phones, tablets
+if (screenWidth <= 1024 && screenHeight > screenWidth) {
+    rootComponent = AppMobile
+}
 
 new Vue({
   el: '#app',

@@ -22,19 +22,31 @@
   .content-wrapper-inner {
     height            : calc(100vw * 1.3184);
     width             : 100vw;
-    padding           : 50px 150px 0 150px;
+    padding           : 5vh 10vw 0 10vw;
     background-size   : 100vw;
     background-image  : url('/assets/images/gammasurveillance.png');
     background-repeat : no-repeat;
 
     .page-title {
-      font-size   : 35px;
-      font-family : @bold-font;
+      font-family: @bold-font;
+
+      .breakpoint-gte-2048( { font-size: 50px; });
+      .breakpoint-1920-2048({ font-size: 44px; });
+      .breakpoint-1680-1920({ font-size: 41px; });
+      .breakpoint-1440-1680({ font-size: 38px; });
+      .breakpoint-1280-1440({ font-size: 35px; });
+      .breakpoint-lt-1280(  { font-size: 32px; });
 
       .live-streaming-text {
-        margin      : 30px 0;
-        font-size   : 20px;
+        margin      : 4vh 0;
         font-family : @light-font;
+
+        .breakpoint-gte-2048( { font-size: 34px; });
+        .breakpoint-1920-2048({ font-size: 29px; });
+        .breakpoint-1680-1920({ font-size: 26px; });
+        .breakpoint-1440-1680({ font-size: 23px; });
+        .breakpoint-1280-1440({ font-size: 20px; });
+        .breakpoint-lt-1280(  { font-size: 17px; });
 
         &.italic { font-style: italic; }
       }
@@ -42,18 +54,54 @@
 
     .page-content {
       .content-title {
-        margin      : 40px 0;
-        font-size   : 25px;
+        margin      : 4vh 0;
         font-family : @regular-font;
+
+        .breakpoint-gte-2048( {
+          margin    : 5vh 0;
+          font-size : 40px;
+        });
+        .breakpoint-1920-2048({ font-size: 34px; });
+        .breakpoint-1680-1920({ font-size: 31px; });
+        .breakpoint-1440-1680({ font-size: 28px; });
+        .breakpoint-1280-1440({ font-size: 25px; });
+        .breakpoint-lt-1280(  { font-size: 22px; });
       }
 
       .item-list {
         list-style-type: square;
 
         .item {
-          padding-bottom : 30px;
-          font-size      : 18px;
-          line-height    : 22px;
+          .breakpoint-gte-2048({
+            padding-bottom : 5vh;
+            font-size      : 28px;
+            line-height    : 34px;
+          });
+          .breakpoint-1920-2048({
+            padding-bottom : 4.5vh;
+            font-size      : 26px;
+            line-height    : 34px;
+          });
+          .breakpoint-1680-1920({
+            padding-bottom : 4vh;
+            font-size      : 22px;
+            line-height    : 30px;
+          });
+          .breakpoint-1440-1680({
+            padding-bottom : 4vh;
+            font-size      : 20px;
+            line-height    : 26px;
+          });
+          .breakpoint-1280-1440({
+            padding-bottom : 4vh;
+            font-size      : 18px;
+            line-height    : 20px;
+          });
+          .breakpoint-lt-1280({
+            padding-bottom : 3vh;
+            font-size      : 14px;
+            line-height    : 16px;
+          });
 
           &:last-child { padding-bottom: 0; }
         }
@@ -100,11 +148,6 @@
         <div class="content-title">Legal</div>
         <div class="content-title">Gamma Documentation</div>
         -->
-        <div class="content-title">Gamma Companies</div>
-        <ul class="item-list">
-          <li class="item">Gamma gradnje d. o. o.</li>
-          <li class="item">Xaurum Gamma trust A. G.</li>
-        </ul>
       </div>
     </div>
   </div>

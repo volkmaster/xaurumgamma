@@ -11,6 +11,7 @@
   width                      : 100vw;
   height                     : 90vh;
   color                      : @black;
+  background-color           : @white;
   background-size            : 100vw;
   background-image           : url('/assets/images/gammaico.png');
   background-repeat          : no-repeat;

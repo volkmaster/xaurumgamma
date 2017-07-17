@@ -20,42 +20,53 @@
   }
 
   .content-wrapper-inner {
-    position          : relative;
-    width             : 100vw;
-    height            : 90vh;
-    background-size   : 100vw 90vh;
-    background-image  : url('/assets/images/realtimeeconomy.png');
-    background-repeat : no-repeat;
-    opacity           : 0.9;
-    transition        : filter 0.3s ease-in;
+    position           : relative;
+    width              : 100vw;
+    height             : 90vh;
+    background-size    : 100vw 90vh;
+    background-image   : url('/assets/images/realtimeeconomy.png');
+    background-repeat  : no-repeat;
+    opacity            : 0.9;
+    -webkit-transition : filter 0.2s ease-in;
+    -moz-transition    : filter 0.2s ease-in;
+    -o-transition      : filter 0.2s ease-in;
+    transition         : filter 0.2s ease-in;
 
     &.fade { filter: blur(3px); }
   }
 
   .real-time-economy {
-    position       : absolute;
-    left           : 48.85%;
-    top            : 44.7%;
-    transform      : translate(-50%, -50%);
-    width          : 20%;
-    margin         : 10px auto 25px auto;
-    padding-bottom : 10px;
-    border-top     : 1px solid @white;
-    border-bottom  : 1px solid @white;
-    display        : flex;
-    align-items    : center;
-    flex-direction : column;
-    cursor         : pointer;
-    transition     : width 0.3s ease-in;
+    position           : absolute;
+    left               : 49.3%;
+    top                : 44.7%;
+    transform          : translate(-50%, -50%);
+    width              : 20%;
+    margin             : 10px auto 25px auto;
+    padding-bottom     : 10px;
+    border-top         : 1px solid @white;
+    border-bottom      : 1px solid @white;
+    display            : flex;
+    align-items        : center;
+    flex-direction     : column;
+    cursor             : pointer;
+    -webkit-transition : width 0.2s ease-in;
+    -moz-transition    : width 0.2s ease-in;
+    -o-transition      : width 0.2s ease-in;
+    transition         : width 0.2s ease-in;
 
     .icon-wrapper {
+      & when (@debug = true) { border: 1px solid red; }
+
+      width           : 100%;
+      height          : 100%;
       padding         : 2vh 0;
       display         : flex;
       justify-content : center;
 
       .icon {
-        font-size : 50px;
-        color     : @white;
+          width  : 20%;
+          height : 20%;
+          color  : @white;
       }
     }
 
@@ -64,9 +75,15 @@
 
       width       : 100%;
       font-family : @regular-font;
-      font-size   : 16px;
       text-align  : center;
       color       : @white;
+
+      .breakpoint-gte-2048( { font-size: 34px; });
+      .breakpoint-1920-2048({ font-size: 28px; });
+      .breakpoint-1680-1920({ font-size: 24px; });
+      .breakpoint-1440-1680({ font-size: 20px; });
+      .breakpoint-1280-1440({ font-size: 16px; });
+      .breakpoint-lt-1280(  { font-size: 16px; });
     }
 
     &:hover { width: 25%; }
@@ -76,31 +93,66 @@
     position         : absolute;
     left             : 50%;
     transform        : translate(-50%, -45%);
-    padding          : 15px 20px 0 20px;
+    padding          : 2vh 2vw 1vh 2.5vw;
     background-color : @black;
     color            : @white;
     border           : 2px solid @white;
 
     .page-title {
-      font-size   : 30px;
-      font-family : @bold-font;
+      font-family: @bold-font;
+
+      .breakpoint-gte-2048( { font-size: 45px; });
+      .breakpoint-1920-2048({ font-size: 39px; });
+      .breakpoint-1680-1920({ font-size: 36px; });
+      .breakpoint-1440-1680({ font-size: 33px; });
+      .breakpoint-1280-1440({ font-size: 30px; });
+      .breakpoint-lt-1280(  { font-size: 27px; });
     }
 
     .page-content {
       width: 85%;
 
       p {
-        font-size   : 15px;
-        text-align  : justify;
-        line-height : 22px;
+        text-align: justify;
         color       : @gray;
+
+        .breakpoint-gte-2048({
+          font-size   : 27px;
+          line-height : 36px;
+        });
+        .breakpoint-1920-2048({
+          font-size   : 22px;
+          line-height : 32px;
+        });
+        .breakpoint-1680-1920({
+          font-size   : 19px;
+          line-height : 28px;
+        });
+        .breakpoint-1440-1680({
+          font-size   : 17px;
+          line-height : 24px;
+        });
+        .breakpoint-1280-1440({
+          font-size   : 15px;
+          line-height : 20px;
+        });
+        .breakpoint-lt-1280({
+          font-size   : 13px;
+          line-height : 16px;
+        });
       }
 
       .content-title {
-        margin      : 15px 0;
-        font-size   : 20px;
+        margin      : 2vh 0;
         font-family : @regular-font;
         color       : @white;
+
+        .breakpoint-gte-2048( { font-size: 35px; });
+        .breakpoint-1920-2048({ font-size: 29px; });
+        .breakpoint-1680-1920({ font-size: 26px; });
+        .breakpoint-1440-1680({ font-size: 23px; });
+        .breakpoint-1280-1440({ font-size: 20px; });
+        .breakpoint-lt-1280(  { font-size: 17px; });
       }
 
       .item-list {
@@ -108,9 +160,36 @@
         color           : @gray;
 
         .item {
-          padding-bottom : 10px;
-          font-size      : 15px;
-          line-height    : 22px;
+          .breakpoint-gte-2048({
+            padding-bottom : 2vh;
+            font-size      : 27px;
+            line-height    : 36px;
+          });
+          .breakpoint-1920-2048({
+            padding-bottom : 2vh;
+            font-size      : 22px;
+            line-height    : 32px;
+          });
+          .breakpoint-1680-1920({
+            padding-bottom : 2vh;
+            font-size      : 19px;
+            line-height    : 28px;
+          });
+          .breakpoint-1440-1680({
+            padding-bottom : 2vh;
+            font-size      : 17px;
+            line-height    : 24px;
+          });
+          .breakpoint-1280-1440({
+            padding-bottom : 2vh;
+            font-size      : 15px;
+            line-height    : 20px;
+          });
+          .breakpoint-lt-1280({
+            padding-bottom : 2vh;
+            font-size      : 13px;
+            line-height    : 16px;
+          });
 
           &:last-child { padding-bottom: 0; }
         }
@@ -137,8 +216,18 @@
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
-.fade-enter-active { transition: opacity 0.3s linear; }
-.fade-leave-active { transition: opacity 0.3s linear; }
+.fade-enter-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
+.fade-leave-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
 </style>
 
 <template>
@@ -149,9 +238,7 @@
     <div class="content-wrapper-inner" :class="{ fade: realTimeEconomyHovered || realTimeEconomyDialogOpened }" v-show="!loading"></div>
     <div class="real-time-economy no-select" @mouseenter="realTimeEconomyHovered = true" @mouseleave="realTimeEconomyHovered = false" @click="openRealTimeEconomyDialog()" v-show="!loading">
       <div class="icon-wrapper">
-        <span class="fa-stack fa-lg">
-          <i class="icon fa fa-money fa-stack-1x"></i>
-        </span>
+        <img class="icon" src="/assets/images/xaurum-icon.svg"/>
       </div>
       <div class="title">REAL TIME ECONOMY</div>
     </div>

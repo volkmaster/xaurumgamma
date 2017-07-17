@@ -11,6 +11,7 @@
   width                      : 100vw;
   height                     : 90vh;
   color                      : @black;
+  background-color           : @white;
   background-size            : 100vw;
   background-image           : url('/assets/images/gammasurveillance.png');
   background-repeat          : no-repeat;
@@ -83,14 +84,8 @@
           <li class="item">we have selected crucial managing and oversight partners to become board members of the project</li>
           <li class="item">if the project does not succeed, the real-estates will be sold and distributed to gamma users in xaurum</li>
         </ul>
-        <div class="content-title">Legal</div>
-        <div class="content-title">Gamma Documentation</div>
-        <div class="content-title">Gamma Companies</div>
-        <p>
-          Gamma gradnje d. o. o.
-          <br/>
-          Xaurum Gamma trust A. G.
-        </p>
+        <!-- <div class="content-title">Legal</div>
+        <div class="content-title">Gamma Documentation</div> -->
       </div>
     </div>
   </div>

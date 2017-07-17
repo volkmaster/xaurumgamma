@@ -23,34 +23,73 @@
     position          : relative;
     width             : 100vw;
     height            : calc(100vw * 1.3184);
-    padding           : 50px 150px 0 150px;
+    padding           : 5vh 10vw 0 10vw;
     background-size   : 100vw;
     background-color  : @white;
     background-image  : url('/assets/images/projectoverview.png');
     background-repeat : no-repeat;
 
     .content {
-      transition: filter 0.3s linear;
+      -webkit-transition : filter 0.3s linear;
+      -moz-transition    : filter 0.3s linear;
+      -o-transition      : filter 0.3s linear;
+      transition         : filter 0.3s linear;
 
       &.fade { filter: blur(10px); }
 
       .page-title {
-        font-size   : 35px;
-        font-family : @bold-font;
+        font-family: @bold-font;
+
+        .breakpoint-gte-2048( { font-size: 50px; });
+        .breakpoint-1920-2048({ font-size: 44px; });
+        .breakpoint-1680-1920({ font-size: 41px; });
+        .breakpoint-1440-1680({ font-size: 38px; });
+        .breakpoint-1280-1440({ font-size: 35px; });
+        .breakpoint-lt-1280(  { font-size: 32px; });
       }
 
       .page-content {
         p {
-          font-size   : 16px;
-          text-align  : justify;
-          line-height : 22px;
+          text-align: justify;
+
+          .breakpoint-gte-2048({
+            font-size   : 28px;
+            line-height : 34px;
+          });
+          .breakpoint-1920-2048({
+            font-size   : 26px;
+            line-height : 34px;
+          });
+          .breakpoint-1680-1920({
+            font-size   : 20px;
+            line-height : 30px;
+          });
+          .breakpoint-1440-1680({
+            font-size   : 18px;
+            line-height : 26px;
+          });
+          .breakpoint-1280-1440({
+            font-size   : 16px;
+            line-height : 20px;
+          });
+          .breakpoint-lt-1280({
+            font-size   : 12px;
+            line-height : 16px;
+          });
         }
 
         .xaurum {
           display         : flex;
           justify-content : center;
 
-          .img-gold { height: 120px; }
+          .img-gold {
+            .breakpoint-gte-2048( { height: 182.9px; });
+            .breakpoint-1920-2048({ height: 164.61px; });
+            .breakpoint-1680-1920({ height: 148.15px; });
+            .breakpoint-1440-1680({ height: 133.33px; });
+            .breakpoint-1280-1440({ height: 120px; });
+            .breakpoint-lt-1280(  { height: 108px; });
+          }
         }
 
         .xaurum-gamma {
@@ -58,21 +97,31 @@
           justify-content : center;
 
           .img-purple {
-            height : 72px;
-            margin : 15px 0;
+            margin: 15px 0;
+
+            .breakpoint-gte-2048( { height: 109.74px; });
+            .breakpoint-1920-2048({ height: 98.77px; });
+            .breakpoint-1680-1920({ height: 88.89px; });
+            .breakpoint-1440-1680({ height: 80px; });
+            .breakpoint-1280-1440({ height: 72px; });
+            .breakpoint-lt-1280(  { height: 64.8px; });
           }
         }
 
         .video {
-          width          : 25%;
-          margin         : 10px auto 25px auto;
-          padding-bottom : 10px;
-          border-top     : 1px solid @purple;
-          border-bottom  : 1px solid @purple;
-          display        : flex;
-          align-items    : center;
-          flex-direction : column;
-          cursor         : pointer;
+          width              : 25%;
+          margin             : 3vh auto 3vh auto;
+          padding-bottom     : 10px;
+          border-top         : 1px solid @purple;
+          border-bottom      : 1px solid @purple;
+          display            : flex;
+          align-items        : center;
+          flex-direction     : column;
+          cursor             : pointer;
+          -webkit-transition : width 0.3s ease-in;
+          -moz-transition    : width 0.3s ease-in;
+          -o-transition      : width 0.3s ease-in;
+          transition         : width 0.3s ease-in;
 
           .icon-wrapper {
             padding         : 2vh 0;
@@ -88,19 +137,20 @@
           .title {
             & when (@debug = true) { border: 1px solid red; }
 
-            width        : 100%;
+            width        : 20vw;
             font-family  : @regular-font;
-            font-size    : 16px;
             text-align   : center;
             color        : @purple;
+
+            .breakpoint-gte-2048( { font-size: 28px; });
+            .breakpoint-1920-2048({ font-size: 26px; });
+            .breakpoint-1680-1920({ font-size: 20px; });
+            .breakpoint-1440-1680({ font-size: 18px; });
+            .breakpoint-1280-1440({ font-size: 16px; });
+            .breakpoint-lt-1280(  { font-size: 12px; });
           }
 
-          &:hover {
-            border-color: @black;
-
-            .icon  { color: @black; }
-            .title { color: @black; }
-          }
+          &:hover { width: 35%; }
         }
       }
     }
@@ -109,11 +159,44 @@
       position         : absolute;
       left             : 50%;
       transform        : translate(-50%, -62.5%);
-      padding          : 80px;
       display          : flex;
       justify-content  : center;
       background-color : @black;
       border           : 2px solid @white;
+
+      .breakpoint-gte-2048( { padding: 4%; });
+      .breakpoint-1920-2048({ padding: 4%; });
+      .breakpoint-1680-1920({ padding: 4.5%; });
+      .breakpoint-1440-1680({ padding: 5.5%; });
+      .breakpoint-1280-1440({ padding: 6%; });
+      .breakpoint-lt-1280(  { padding: 8%; });
+
+      .video-iframe {
+        .breakpoint-gte-2048( {
+          width  : 896px;
+          height : 504px;
+        });
+        .breakpoint-1920-2048({
+          width  : 840px;
+          height : 472.5px;
+        });
+        .breakpoint-1680-1920({
+          width  : 735px;
+          height : 413.4375px;
+        });
+        .breakpoint-1440-1680({
+          width  : 630px;
+          height : 354.375px;
+        });
+        .breakpoint-1280-1440({
+          width  : 560px;
+          height : 315px;
+        });
+        .breakpoint-lt-1280({
+          width  : 448px;
+          height : 252px;
+        });
+      }
 
       .btn-close {
         & when (@debug = true) { border: 1px solid red; }
@@ -136,8 +219,18 @@
 }
 
 .fade-enter, .fade-leave-to { opacity: 0; }
-.fade-enter-active { transition: opacity 0.3s linear; }
-.fade-leave-active { transition: opacity 0.3s linear; }
+.fade-enter-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
+.fade-leave-active {
+  -webkit-transition : opacity 0.3s linear;
+  -moz-transition    : opacity 0.3s linear;
+  -o-transition      : opacity 0.3s linear;
+  transition         : opacity 0.3s linear;
+}
 </style>
 
 <template>
@@ -165,8 +258,8 @@
           </p>
           <div class="video no-select" @click="openVideoDialog()">
             <div class="icon-wrapper">
-              <span class="fa-stack fa-lg">
-                <i class="icon fa fa-play fa-stack-1x"></i>
+              <span>
+                <i :class="'icon fa fa-play fa-' + iconSize"></i>
               </span>
             </div>
             <div class="title">XAURUM GAMMA the first crypto smart-street video</div>
@@ -190,7 +283,7 @@
       </div>
       <transition name="fade">
         <div class="video-dialog-wrapper" v-show="videoDialogOpened">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/liZuIGZFY8o?rel=0" frameborder="0" allowfullscreen></iframe>
+          <iframe class="video-iframe" src="https://www.youtube.com/embed/liZuIGZFY8o?rel=0" frameborder="0" allowfullscreen></iframe>
           <div class="btn-close">
             <img class="image" src="/assets/images/btn-close.png" @click="closeVideoDialog()"/>
           </div>
@@ -207,13 +300,17 @@ export default {
   data () {
     return {
       loading: true,
+      iconSize: '',
       videoDialogOpened: false
     }
   },
   mounted () {
     this.$nextTick(() => {
       $('.content-wrapper').waitForImages(() => {
-        setTimeout(() => { this.loading = false }, 1000)
+        setTimeout(() => {
+          this.loading = false
+          this.sizeIcons()
+        }, 1000)
       })
       window.addEventListener('resize', () => this.resize())
     })
@@ -223,7 +320,24 @@ export default {
   },
   methods: {
     resize () {
+      this.sizeIcons()
       this.positionVideoDialog()
+    },
+    sizeIcons () {
+      let width = document.documentElement.clientWidth
+      if (width >= 2048) {
+        this.iconSize = '5x'
+      } else if (width < 2048 && width >= 1920) {
+        this.iconSize = '4x'
+      } else if (width < 1920 && width >= 1680) {
+        this.iconSize = '4x'
+      } else if (width < 1680 && width >= 1440) {
+        this.iconSize = '4x'
+      } else if (width < 1440 && width >= 1280) {
+        this.iconSize = '3x'
+      } else if (width < 1280) {
+        this.iconSize = '2x'
+      }
     },
     positionVideoDialog () {
       let dialog = $('.video-dialog-wrapper')

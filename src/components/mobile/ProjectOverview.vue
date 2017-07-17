@@ -11,6 +11,7 @@
   width                      : 100vw;
   height                     : 90vh;
   color                      : @black;
+  background-color           : @white;
   background-size            : 100vw;
   background-image           : url('/assets/images/projectoverview.png');
   background-repeat          : no-repeat;
@@ -19,23 +20,17 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 15px;
+    padding: 30px 30px 350px 30px;
 
     .page-title {
       margin-bottom : 50px;
       font-size     : 50px;
-      font-family   : @regular-font;
+      font-family   : @bold-font;
     }
 
     .page-content {
-      .content-title {
-        margin      : 20px 0;
-        font-size   : 30px;
-        font-family : @regular-font;
-      }
-
       p {
-        font-size   : 20px;
+        font-size   : 18px;
         text-align  : justify;
         line-height : 40px;
       }
@@ -60,26 +55,6 @@
         display         : flex;
         justify-content : center;
       }
-    }
-  }
-
-  .footer-wrapper {
-    padding          : 15px;
-    background-color : @black;
-    color            : @white;
-
-    .title {
-      font-size     : 30px;
-      margin-bottom : 10px;
-      font-family   : @regular-font;
-    }
-
-    .text {
-      font-size     : 20px;
-      margin-bottom : 40px;
-      line-height   : 40px;
-
-      .item-list { list-style-type: square; }
     }
   }
 }
@@ -122,36 +97,6 @@
         <p>
           The initial goal of the project is to secure enough funds to build the first private Xaurum luxury smart-street, and acquire the Croatian company that owns the plot with the first object already built. The completion of the building development is scheduled in May 2018, making it open for use and rent in the summer season of 2018. Because one object is already built, the profit from the already opened villa will start to accumulate soon after the ICO. After the final development of the initial buildings and infrastructure, half of the rent profits will accumulate, until the expansion of the street or a creation of a new street will be viable.
         </p>
-      </div>
-    </div>
-    <div class="footer-wrapper">
-      <div>
-        <div class="title">
-          XAURUM GAMMA
-        </div>
-        <div class="text">
-          Xaurum Gamma is a commonwealth of the first private crypto smart-street, composed of six luxury villas on the island Krk in Croatia. It is a part of the Xaurum commonwealth and a source of wealth both for gamma (XGM) investors and Xaurum as a whole.
-        </div>
-      </div>
-      <div>
-        <div class="title">
-          XAURUM
-        </div>
-        <div class="text">
-          Xaurum is a crypto-currency with continuously growing gold base. It has appreciated from the initial 0.00625 $ per XAUR to the current 0.30 $ and increased its gold reserves from 1016 g to current 129251 g. Gamma increases the use of Xaurum and its coinage and Xaurum enhances the value of Gamma.
-        </div>
-      </div>
-      <div>
-        <div class="title">
-          COMPANIES
-        </div>
-        <div class="text">
-          <ul class="item-list">
-            <li class="item">Xaurum Gamma tokens: Xaurum Gamma Trust Reg. Liechtenstein</li>
-            <li class="item">Xaurum CryptoCurrency: Auresco Foundation, Slovenia</li>
-            <li class="item">Compliance: Torch Technology AG, Switzerland</li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>

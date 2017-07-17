@@ -1,16 +1,22 @@
 @font-face {
   font-family : 'Montserrat Light';
-  src         : url('/assets/fonts/Montserrat-Light.woff2') format('woff2');
+  src         : url('/assets/fonts/Montserrat-Light.woff2') format('woff2'),
+                url('/assets/fonts/Montserrat-Light.woff')  format('woff'),
+                url('/assets/fonts/Montserrat-Light.ttf')   format('truetype');
 }
 
 @font-face {
   font-family : 'Raleway Medium';
-  src         : url('/assets/fonts/Raleway-Medium.woff2') format('woff2');
+  src         : url('/assets/fonts/Raleway-Medium.woff2') format('woff2'),
+                url('/assets/fonts/Raleway-Medium.woff')  format('woff'),
+                url('/assets/fonts/Raleway-Medium.ttf')   format('truetype');
 }
 
 @font-face {
   font-family : 'Raleway Bold';
-  src         : url('/assets/fonts/Raleway-Bold.woff2') format('woff2');
+  src         : url('/assets/fonts/Raleway-Bold.woff2') format('woff2'),
+                url('/assets/fonts/Raleway-Bold.woff')  format('woff'),
+                url('/assets/fonts/Raleway-Bold.ttf')   format('truetype');
 }
 
 @light-font   : 'Montserrat Light';
@@ -20,7 +26,7 @@
 @black     : rgb(0, 0, 0);
 @white     : rgb(255, 255, 255);
 @gray      : rgb(128,128,128);
-@dark-gray : rgb(80, 80, 80);
+@dark-gray : #606060;
 @purple    : #a04095;
 @gold      : rgb(255, 215, 0);
 
@@ -47,5 +53,24 @@ body {
 button:focus { outline: 0; }
 
 img { user-select: none; }
+
+.breakpoint-gte-2048(@rules) {
+  @media only screen and (min-width: 2048px) { @rules(); }
+}
+.breakpoint-1920-2048(@rules) {
+  @media only screen and (min-width: 1920px) and (max-width: 2047px) { @rules(); }
+}
+.breakpoint-1680-1920(@rules) {
+  @media only screen and (min-width: 1680px) and (max-width: 1919px) { @rules(); }
+}
+.breakpoint-1440-1680(@rules) {
+  @media only screen and (min-width: 1440px) and (max-width: 1679px) { @rules(); }
+}
+.breakpoint-1280-1440(@rules) {
+  @media only screen and (min-width: 1280px) and (max-width: 1439px) { @rules(); }
+}
+.breakpoint-lt-1280(@rules) {
+  @media only screen and (max-width: 1279px) { @rules(); }
+}
 
 @debug: false;

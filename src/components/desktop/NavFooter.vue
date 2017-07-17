@@ -10,22 +10,51 @@
   color            : @white;
 
   .footer-item {
-    padding: 20px 30px;
+    padding: 2vh 2vw;
 
     &.left   { width: 30%; }
     &.center { width: 40%; }
     &.right  { width: 30%; }
 
     .title {
-      padding-bottom : 10px;
-      font-size      : 25px;
+      padding-bottom : 1vh;
       font-family    : @regular-font;
+
+      .breakpoint-gte-2048( { font-size: 40px; });
+      .breakpoint-1920-2048({ font-size: 36px; });
+      .breakpoint-1680-1920({ font-size: 32px; });
+      .breakpoint-1440-1680({ font-size: 28px; });
+      .breakpoint-1280-1440({ font-size: 25px; });
+      .breakpoint-lt-1280(  { font-size: 22px; });
     }
 
     .text {
-      font-size   : 12px;
-      text-align  : justify;
-      line-height : 20px;
+      text-align: justify;
+
+      .breakpoint-gte-2048({
+        font-size   : 24px;
+        line-height : 31px;
+      });
+      .breakpoint-1920-2048({
+        font-size   : 21px;
+        line-height : 28px;
+      });
+      .breakpoint-1680-1920({
+        font-size   : 18px;
+        line-height : 25px;
+      });
+      .breakpoint-1440-1680({
+        font-size   : 15px;
+        line-height : 22px;
+      });
+      .breakpoint-1280-1440({
+        font-size   : 12px;
+        line-height : 20px;
+      });
+      .breakpoint-lt-1280({
+        font-size   : 11px;
+        line-height : 18px;
+      });
 
       .item-list {
         margin          : 0;
@@ -63,7 +92,7 @@
       </div>
       <div class="text">
         <ul class="item-list">
-          <li class="item"Xaurum Gamma tokens: Xaurum Gamma Trust Reg. Liechtenstein</li>
+          <li class="item">Xaurum Gamma tokens: Xaurum Gamma Trust Reg. Liechtenstein</li>
           <li class="item">Xaurum CryptoCurrency: Auresco Foundation, Slovenia</li>
           <li class="item">Compliance: Torch Technology AG, Switzerland</li>
         </ul>

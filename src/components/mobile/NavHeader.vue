@@ -42,14 +42,16 @@
     a { text-decoration: none; }
 
     .nav-list {
-      margin-left     : 2vw;
-      padding         : 0;
+      padding         : 0 6vw;
       display         : none;
       list-style-type : none;
 
       .nav-item {
-        margin : 2vh 0;
-        cursor : pointer;
+        padding       : 2vh 0 2vh 0;
+        border-bottom : 2px solid @dark-gray;
+        cursor        : pointer;
+
+        &:first-child { border-top: 2px solid @dark-gray; }
 
         .nav-text {
           font-size : 40px;
@@ -109,7 +111,9 @@ export default {
       }
       this.$emit('change-page', navItemLabel)
 
-      this.slideNavList()
+      if (navItemLabel !== 'home') {
+        this.slideNavList()
+      }
     },
     slideNavList () {
       $('.nav-list').slideToggle(200, () => {})

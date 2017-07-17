@@ -11,6 +11,7 @@
   width                      : 100vw;
   height                     : 90vh;
   color                      : @black;
+  background-color           : @white;
   background-size            : 100vw;
   background-image           : url('/assets/images/projectoverview.png');
   background-repeat          : no-repeat;
@@ -55,7 +56,7 @@
       </div>
       <div class="page-content">
         <div class="content-title">
-          Xaurum Gamma shows how enhanced transparency of business, investments and even large cooporations, can be done using the blockchain and latest technology
+          Xaurum Gamma shows how enhanced transparency of business and investments can be done using the blockchain and latest technology.
         </div>
         <div class="content-title">
           Gamma Platform Details

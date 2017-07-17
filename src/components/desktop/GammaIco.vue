@@ -22,30 +22,93 @@
   .content-wrapper-inner {
     width             : 100vw;
     height            : calc(100vw * 1.3184);
-    padding           : 50px 150px 0 150px;
+    padding           : 5vh 10vw 0 10vw;
     background-size   : 100vw;
     background-image  : url('/assets/images/gammaico.png');
     background-repeat : no-repeat;
 
     .page-title {
-      font-size   : 35px;
-      font-family : @bold-font;
+      font-family: @bold-font;
+
+      .breakpoint-gte-2048( { font-size: 50px; });
+      .breakpoint-1920-2048({ font-size: 44px; });
+      .breakpoint-1680-1920({ font-size: 41px; });
+      .breakpoint-1440-1680({ font-size: 38px; });
+      .breakpoint-1280-1440({ font-size: 35px; });
+      .breakpoint-lt-1280(  { font-size: 32px; });
+    }
+
+    .countdown-text-wrapper {
+      width           : 25%;
+      margin          : 4vh auto;
+      padding         : 2vh 0;
+      border-top      : 1px solid @black;
+      border-bottom   : 1px solid @black;
+      display         : flex;
+      justify-content : center;
+
+      .countdown-text {
+        font-family: @regular-font;
+
+        .breakpoint-gte-2048( { font-size: 38px; });
+        .breakpoint-1920-2048({ font-size: 32px; });
+        .breakpoint-1680-1920({ font-size: 29px; });
+        .breakpoint-1440-1680({ font-size: 26px; });
+        .breakpoint-1280-1440({ font-size: 23px; });
+        .breakpoint-lt-1280(  { font-size: 20px; });
+      }
     }
 
     .page-content {
       .content-title {
-        margin      : 40px 0;
-        font-size   : 25px;
+        margin      : 4vh 0;
         font-family : @regular-font;
+
+        .breakpoint-gte-2048( {
+          margin    : 5vh 0;
+          font-size : 40px;
+        });
+        .breakpoint-1920-2048({ font-size: 34px; });
+        .breakpoint-1680-1920({ font-size: 31px; });
+        .breakpoint-1440-1680({ font-size: 28px; });
+        .breakpoint-1280-1440({ font-size: 25px; });
+        .breakpoint-lt-1280(  { font-size: 22px; });
       }
 
       .item-list {
         list-style-type: square;
 
         .item {
-          padding-bottom : 30px;
-          font-size      : 18px;
-          line-height    : 22px;
+          .breakpoint-gte-2048({
+            padding-bottom : 5vh;
+            font-size      : 28px;
+            line-height    : 34px;
+          });
+          .breakpoint-1920-2048({
+            padding-bottom : 4.5vh;
+            font-size      : 26px;
+            line-height    : 34px;
+          });
+          .breakpoint-1680-1920({
+            padding-bottom : 4vh;
+            font-size      : 22px;
+            line-height    : 30px;
+          });
+          .breakpoint-1440-1680({
+            padding-bottom : 4vh;
+            font-size      : 20px;
+            line-height    : 26px;
+          });
+          .breakpoint-1280-1440({
+            padding-bottom : 4vh;
+            font-size      : 18px;
+            line-height    : 20px;
+          });
+          .breakpoint-lt-1280({
+            padding-bottom : 3vh;
+            font-size      : 14px;
+            line-height    : 16px;
+          });
 
           &:last-child { padding-bottom: 0; }
         }
@@ -63,6 +126,11 @@
     <div class="content-wrapper-inner" v-show="!loading">
       <div class="page-title">
         Gamma ICO
+      </div>
+      <div class="countdown-text-wrapper">
+        <div class="countdown-text">
+          {{ days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's'}}
+        </div>
       </div>
       <div class="page-content">
         <div class="content-title">Xaurum Gamma Details</div>
@@ -96,7 +164,13 @@ import $ from 'jquery'
 export default {
   data () {
     return {
-      loading: true
+      loading: true,
+      countDownDate: null,
+      interval: null,
+      days: -1,
+      hours: -1,
+      minutes: -1,
+      seconds: -1
     }
   },
   mounted () {
@@ -104,6 +178,26 @@ export default {
       $('.content-wrapper').waitForImages(() => {
         setTimeout(() => { this.loading = false }, 1000)
       })
+
+      this.countDownDate = new Date('Jul 22, 2017 00:00:00').getTime()
+      this.interval = setInterval(() => {
+        let now = new Date().getTime()
+        let diff = this.countDownDate - now
+
+        this.days = Math.floor(diff / (1000 * 60 * 60 * 24))
+        this.hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        this.minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+        this.seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+        // If the count down is finished, write some text 
+        if (diff < 0) {
+          clearInterval(this.interval)
+          this.days = 0
+          this.hours = 0
+          this.minutes = 0
+          this.seconds = 0
+        }
+      }, 1000)
     })
   }
 }
