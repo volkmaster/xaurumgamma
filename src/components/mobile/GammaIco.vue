@@ -9,7 +9,6 @@
   & when (@debug = true) { border: 1px solid blue; }
 
   width                      : 100vw;
-  height                     : 90vh;
   color                      : @black;
   background-color           : @white;
   background-size            : 100vw;

@@ -9,7 +9,6 @@
   & when (@debug = true) { border: 1px solid blue; }
 
   width                      : 100vw;
-  height                     : 90vh;
   color                      : @black;
   background-color           : @white;
   background-size            : 100vw;
@@ -20,12 +19,11 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 15px;
+    padding: 30px 30px 350px 30px;
 
     .page-title {
-      margin-bottom : 50px;
-      font-size     : 50px;
-      font-family   : @regular-font;
+      font-size   : 50px;
+      font-family : @bold-font;
     }
 
     .page-content {

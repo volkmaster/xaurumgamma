@@ -9,7 +9,6 @@
   & when (@debug = true) { border: 1px solid blue; }
 
   width                      : 100vw;
-  height                     : 90vh;
   color                      : @black;
   background-color           : @white;
   background-size            : 100vw;
@@ -23,8 +22,8 @@
     padding: 30px 30px 350px 30px;
 
     .page-title {
-      font-size     : 50px;
-      font-family   : @bold-font;
+      font-size   : 50px;
+      font-family : @bold-font;
     }
 
     .page-content {
