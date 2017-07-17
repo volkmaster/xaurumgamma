@@ -29,7 +29,7 @@
     .page-content {
       .coming-soon-text {
         margin      : 4vh 0;
-        font-size   : 25px;
+        font-size   : 30px;
         font-family : @light-font;
 
         &.italic { font-style: italic; }

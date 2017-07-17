@@ -19,7 +19,7 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 30px 30px 350px 30px;
+    padding: 30px 30px 250px 30px;
 
     .page-title {
       font-size   : 50px;
