@@ -34,9 +34,19 @@
   }
 
   .page-content {
-    margin-top      : 40px;
-    display         : flex;
-    justify-content : center;
+    .coming-soon-text {
+      margin      : 4vh 0;
+      font-family : @light-font;
+
+      .breakpoint-gte-2048( { font-size: 34px; });
+      .breakpoint-1920-2048({ font-size: 29px; });
+      .breakpoint-1680-1920({ font-size: 26px; });
+      .breakpoint-1440-1680({ font-size: 23px; });
+      .breakpoint-1280-1440({ font-size: 20px; });
+      .breakpoint-lt-1280(  { font-size: 17px; });
+
+      &.italic { font-style: italic; }
+    }
 
     .team-member {
       position        : relative;
@@ -92,7 +102,10 @@
         Team
       </div>
       <div class="page-content">
-        <div class="team-member" v-for="teamMember in teamMembers" @mouseenter="teamMember.active = true" @mouseleave="teamMember.active = false">
+        <div class="coming-soon-text italic">
+          Coming soon...
+        </div>
+        <!-- <div class="team-member" v-for="teamMember in teamMembers" @mouseenter="teamMember.active = true" @mouseleave="teamMember.active = false">
           <img class="team-member-img" :class="{ fade: teamMember.active }" :src="'/assets/images/' + teamMember.image + '.jpg'" />
           <div class="team-member-text" v-show="!teamMember.active">
             <div class="team-member-name">
@@ -102,7 +115,7 @@
               {{ teamMember.position }}
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

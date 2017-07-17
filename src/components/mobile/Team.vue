@@ -19,7 +19,7 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 30px 30px 350px 30px;
+    padding: 30px 30px 1250px 30px;
 
     .page-title {
       font-size   : 50px;
@@ -27,6 +27,14 @@
     }
 
     .page-content {
+      .coming-soon-text {
+        margin      : 4vh 0;
+        font-size   : 25px;
+        font-family : @light-font;
+
+        &.italic { font-style: italic; }
+      }
+
       .team-member {
         margin  : 0 0 30px 30px;
         display : flex;
@@ -60,7 +68,10 @@
         Team
       </div>
       <div class="page-content">
-        <div class="team-member">
+        <div class="coming-soon-text italic">
+          Coming soon...
+        </div>
+        <!-- <div class="team-member">
           <img src="/assets/images/gasper_kenda.jpg" class="team-member-img"/>
           <div class="team-member-text">
             <div class="team-member-name">
@@ -104,7 +115,7 @@
               Technical support and research.
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <nav-footer></nav-footer>

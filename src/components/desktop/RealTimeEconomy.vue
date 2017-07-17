@@ -57,17 +57,11 @@
     .icon-wrapper {
       & when (@debug = true) { border: 1px solid red; }
 
-      width           : 100%;
-      height          : 100%;
       padding         : 2vh 0;
       display         : flex;
       justify-content : center;
 
-      .icon {
-          width  : 20%;
-          height : 20%;
-          color  : @white;
-      }
+      .icon { color: @white; }
     }
 
     .title {
@@ -249,7 +243,7 @@
         </div>
         <div class="page-content">
           <p>
-            Xaurum Gamma shows how enhanced transparency of business, investments and even large cooporations, can be done using the blockchain and latest technology.
+            Xaurum Gamma shows how enhanced transparency of business and investments can be done using the blockchain and latest technology.
           <p>
           <div class="content-title">
             Gamma Platform Details
