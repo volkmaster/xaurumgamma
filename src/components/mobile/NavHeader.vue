@@ -116,7 +116,7 @@ export default {
       }
     },
     slideNavList () {
-      $('.nav-list').slideToggle(200, () => {})
+      $('.nav-list').slideToggle(0, () => {})
     }
   }
 }

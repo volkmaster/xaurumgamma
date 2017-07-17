@@ -20,18 +20,17 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 15px;
+    padding: 30px 30px 350px 30px;
 
     .page-title {
-      margin-bottom : 50px;
-      font-size     : 50px;
-      font-family   : @regular-font;
+      font-size   : 50px;
+      font-family : @bold-font;
     }
 
     .page-content {
       .content-title {
-        margin      : 20px 0;
-        font-size   : 30px;
+        margin      : 40px 0;
+        font-size   : 40px;
         font-family : @regular-font;
       }
 
@@ -40,9 +39,8 @@
 
         .item {
           padding-bottom : 20px;
-          font-size      : 20px;
-
-          &:last-child { padding-bottom: 500px; }
+          font-size      : 30px;
+          line-height    : 35px;
         }
       }
     }
@@ -79,13 +77,19 @@
         </ul>
       </div>
     </div>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
+import NavFooter from './NavFooter.vue'
+
 export default {
   data () {
     return {}
+  },
+  components: {
+    navFooter: NavFooter
   }
 }
 </script>

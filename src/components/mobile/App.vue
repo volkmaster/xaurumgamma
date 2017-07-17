@@ -35,15 +35,11 @@
     <team
       v-else-if="currentPage === 'team'">
     </team>
-    <nav-footer
-      v-if="currentPage !== 'home'">
-    </nav-footer>
   </div>
 </template>
 
 <script>
 import NavHeader from './NavHeader.vue'
-import NavFooter from './NavFooter.vue'
 import Home from './Home.vue'
 import ProjectOverview from './ProjectOverview.vue'
 import GammaIco from './GammaIco.vue'
@@ -64,7 +60,6 @@ export default {
   },
   components: {
     navHeader: NavHeader,
-    navFooter: NavFooter,
     home: Home,
     projectOverview: ProjectOverview,
     gammaIco: GammaIco,

@@ -109,13 +109,19 @@
         </div>
       </div>
     </div>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
+import NavFooter from './NavFooter.vue'
+
 export default {
   data () {
     return {}
+  },
+  components: {
+    navFooter: NavFooter
   }
 }
 </script>

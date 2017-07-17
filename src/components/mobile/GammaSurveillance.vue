@@ -20,19 +20,20 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 15px;
+    padding: 30px 30px 350px 30px;
 
     .page-title {
-      margin-bottom : 50px;
       font-size     : 50px;
-      font-family   : @regular-font;
+      font-family   : @bold-font;
     }
 
     .page-content {
       .content-title {
         margin      : 40px 0;
-        font-size   : 30px;
+        font-size   : 40px;
         font-family : @regular-font;
+
+        &.italic { font-style: italic; }
       }
 
       .item-list {
@@ -40,14 +41,9 @@
 
         .item {
           padding-bottom : 20px;
-          font-size      : 20px;
+          font-size      : 30px;
+          line-height    : 35px;
         }
-      }
-
-      p {
-        font-size   : 20px;
-        text-align  : justify;
-        line-height : 40px;
       }
     }
   }
@@ -61,7 +57,7 @@
         Gamma Surveillance
       </div>
       <div class="page-content">
-        <div class="content-title">Live streaming of the construction (coming soon...)</div>
+        <div class="content-title italic">Live streaming of the construction (coming soon...)</div>
         <div class="content-title">Xaurum Street Details</div>
         <ul class="item-list">
           <li class="item">it will be a smart-street of luxury villas, with all the services payable in xaurum</li>
@@ -88,13 +84,19 @@
         <div class="content-title">Gamma Documentation</div> -->
       </div>
     </div>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
+import NavFooter from './NavFooter.vue'
+
 export default {
   data () {
     return {}
+  },
+  components: {
+    navFooter: NavFooter
   }
 }
 </script>

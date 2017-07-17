@@ -22,8 +22,6 @@
     line-height   : 30px;
     font-family   : @light-font;
 
-    &:last-child { margin-bottom: 20px; }
-
     .item-list { list-style-type: square; }
   }
 }

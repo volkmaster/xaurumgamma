@@ -20,18 +20,23 @@
   -webkit-overflow-scrolling : touch;
 
   .content-wrapper-inner {
-    padding: 15px;
+    padding: 30px 30px 650px 30px;
 
     .page-title {
-      margin-bottom : 50px;
-      font-size     : 50px;
-      font-family   : @regular-font;
+      font-size   : 50px;
+      font-family : @bold-font;
     }
 
     .page-content {
+      p {
+        font-size   : 30px;
+        text-align  : justify;
+        line-height : 35px;
+      }
+
       .content-title {
         margin      : 40px 0;
-        font-size   : 30px;
+        font-size   : 40px;
         font-family : @regular-font;
       }
 
@@ -40,7 +45,8 @@
 
         .item {
           padding-bottom : 20px;
-          font-size      : 20px;
+          font-size      : 30px;
+          line-height    : 35px;
         }
       }
     }
@@ -55,9 +61,9 @@
         Real Time Economy
       </div>
       <div class="page-content">
-        <div class="content-title">
+        <p>
           Xaurum Gamma shows how enhanced transparency of business and investments can be done using the blockchain and latest technology.
-        </div>
+        </p>
         <div class="content-title">
           Gamma Platform Details
         </div>
@@ -72,13 +78,19 @@
         </ul>
       </div>
     </div>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
+import NavFooter from './NavFooter.vue'
+
 export default {
   data () {
     return {}
+  },
+  components: {
+    navFooter: NavFooter
   }
 }
 </script>

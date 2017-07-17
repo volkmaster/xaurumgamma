@@ -23,16 +23,16 @@
     padding: 30px 30px 350px 30px;
 
     .page-title {
-      margin-bottom : 50px;
+      margin-bottom : 40px;
       font-size     : 50px;
       font-family   : @bold-font;
     }
 
     .page-content {
       p {
-        font-size   : 18px;
+        font-size   : 30px;
         text-align  : justify;
-        line-height : 40px;
+        line-height : 35px;
       }
 
       .xaurum {
@@ -99,13 +99,19 @@
         </p>
       </div>
     </div>
+    <nav-footer></nav-footer>
   </div>
 </template>
 
 <script>
+import NavFooter from './NavFooter.vue'
+
 export default {
   data () {
     return {}
+  },
+  components: {
+    navFooter: NavFooter
   }
 }
 </script>
