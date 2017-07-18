@@ -40,7 +40,7 @@
 
     .countdown-text-wrapper {
       width           : 25%;
-      margin          : 4vh auto;
+      margin          : 2vh auto 5vh auto;
       padding         : 2vh 0;
       border-top      : 1px solid @black;
       border-bottom   : 1px solid @black;
@@ -124,9 +124,9 @@
       <img src="/assets/images/loader.svg"/>
     </div>
     <div class="content-wrapper-inner" v-show="!loading">
-      <div class="page-title">
+      <!-- <div class="page-title">
         Gamma ICO
-      </div>
+      </div> -->
       <div class="countdown-text-wrapper">
         <div class="countdown-text">
           {{ days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's'}}

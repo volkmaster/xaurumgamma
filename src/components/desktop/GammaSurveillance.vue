@@ -36,20 +36,20 @@
       .breakpoint-1440-1680({ font-size: 38px; });
       .breakpoint-1280-1440({ font-size: 35px; });
       .breakpoint-lt-1280(  { font-size: 32px; });
+    }
 
-      .live-streaming-text {
-        margin      : 4vh 0;
-        font-family : @light-font;
+    .live-streaming-text {
+      margin      : 2vh 0 5vh 0;
+      font-family : @light-font;
 
-        .breakpoint-gte-2048( { font-size: 34px; });
-        .breakpoint-1920-2048({ font-size: 29px; });
-        .breakpoint-1680-1920({ font-size: 26px; });
-        .breakpoint-1440-1680({ font-size: 23px; });
-        .breakpoint-1280-1440({ font-size: 20px; });
-        .breakpoint-lt-1280(  { font-size: 17px; });
+      .breakpoint-gte-2048( { font-size: 34px; });
+      .breakpoint-1920-2048({ font-size: 29px; });
+      .breakpoint-1680-1920({ font-size: 26px; });
+      .breakpoint-1440-1680({ font-size: 23px; });
+      .breakpoint-1280-1440({ font-size: 20px; });
+      .breakpoint-lt-1280(  { font-size: 17px; });
 
-        &.italic { font-style: italic; }
-      }
+      &.italic { font-style: italic; }
     }
 
     .page-content {
@@ -117,10 +117,10 @@
       <img src="/assets/images/loader.svg"/>
     </div>
     <div class="content-wrapper-inner" v-show="!loading">
-      <div class="page-title">
+      <!-- <div class="page-title">
         Gamma Surveillance
-        <div class="live-streaming-text italic">Live streaming of the construction (coming soon...)</div>
-      </div>
+      </div> -->
+      <div class="live-streaming-text italic">Live streaming of the construction (coming soon...)</div>
       <div class="page-content">
         <div class="content-title">Xaurum Street Details</div>
         <ul class="item-list">

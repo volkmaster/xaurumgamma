@@ -60,8 +60,6 @@
       padding         : 2vh 0;
       display         : flex;
       justify-content : center;
-
-      .icon { color: @white; }
     }
 
     .title {
@@ -107,8 +105,8 @@
       width: 85%;
 
       p {
-        text-align: justify;
-        color       : @gray;
+        text-align : justify;
+        color      : @gray;
 
         .breakpoint-gte-2048({
           font-size   : 27px;
@@ -232,15 +230,15 @@
     <div class="content-wrapper-inner" :class="{ fade: realTimeEconomyHovered || realTimeEconomyDialogOpened }" v-show="!loading"></div>
     <div class="real-time-economy no-select" @mouseenter="realTimeEconomyHovered = true" @mouseleave="realTimeEconomyHovered = false" @click="openRealTimeEconomyDialog()" v-show="!loading">
       <div class="icon-wrapper">
-        <img class="icon" src="/assets/images/xaurum-icon.svg"/>
+        <img class="icon" src="/assets/images/xaurum-icon-white.svg"/>
       </div>
       <div class="title">REAL TIME ECONOMY</div>
     </div>
     <transition name="fade">
       <div class="real-time-economy-dialog-wrapper" v-show="realTimeEconomyDialogOpened">
-        <div class="page-title">
+        <!-- <div class="page-title">
           Real Time Economy
-        </div>
+        </div> -->
         <div class="page-content">
           <p>
             Xaurum Gamma shows how enhanced transparency of business and investments can be done using the blockchain and latest technology.

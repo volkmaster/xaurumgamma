@@ -28,25 +28,37 @@
     }
   }
 
-  .nav-item {
-    margin-left : 30px;
-    color       : @white;
-    font-family : @regular-font;
-    cursor      : pointer;
-    -webkit-transition : color 0.2s linear;
-    -moz-transition    : color 0.2s linear;
-    -o-transition      : color 0.2s linear;
-    transition         : color 0.2s linear;
+  .nav-wrapper {
+    & when(@debug = true) { border: 1px solid yellow; }
 
-    .breakpoint-gte-2048( { font-size: 30px; });
-    .breakpoint-1920-2048({ font-size: 24px; });
-    .breakpoint-1680-1920({ font-size: 22px; });
-    .breakpoint-1440-1680({ font-size: 18px; });
-    .breakpoint-1280-1440({ font-size: 16px; });
-    .breakpoint-lt-1280(  { font-size: 14px; });
+    width           : 100%;
+    height          : 100%;
+    margin          : 0 3vw 0 2vw;
+    display         : flex;
+    align-items     : center;
+    justify-content : space-around;
 
-    &:hover  { color: @purple; }
-    &.active { color: @purple; }
+    .nav-item {
+      & when(@debug = true) { border: 1px solid white; }
+
+      color              : @white;
+      font-family        : @regular-font;
+      cursor             : pointer;
+      -webkit-transition : color 0.2s linear;
+      -moz-transition    : color 0.2s linear;
+      -o-transition      : color 0.2s linear;
+      transition         : color 0.2s linear;
+
+      .breakpoint-gte-2048( { font-size: 30px; });
+      .breakpoint-1920-2048({ font-size: 24px; });
+      .breakpoint-1680-1920({ font-size: 22px; });
+      .breakpoint-1440-1680({ font-size: 18px; });
+      .breakpoint-1280-1440({ font-size: 16px; });
+      .breakpoint-lt-1280(  { font-size: 14px; });
+
+      &:hover  { color: @purple; }
+      &.active { color: @purple; }
+    }
   }
 }
 </style>
@@ -56,7 +68,9 @@
     <div class="logo-wrapper">
       <img class="logo" src="/assets/images/logo.png" @click="selectNavItem('home')"/>
     </div>
-    <div class="nav-item" :class="{ active: navItem.active }" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">{{ navItem.label | uppercase }}</div>
+    <div class="nav-wrapper">
+      <div class="nav-item" :class="{ active: navItem.active }" v-for="navItem in navItems" @click="selectNavItem(navItem.label)">{{ navItem.label | uppercase }}</div>
+    </div>
   </div>
 </template>
 

@@ -98,9 +98,9 @@
       <img src="/assets/images/loader.svg"/>
     </div>
     <div class="content-wrapper-inner" v-show="!loading">
-      <div class="page-title">
+      <!-- <div class="page-title">
         Team
-      </div>
+      </div> -->
       <div class="page-content">
         <div class="coming-soon-text italic">
           Coming soon...
