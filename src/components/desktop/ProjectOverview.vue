@@ -52,7 +52,7 @@
 
       .row {
         width           : 100%;
-        margin          : 0vh 0 4.5vh;
+        margin-bottom   : 4.5vh;
         display         : flex;
         justify-content : space-around;
 
@@ -70,7 +70,7 @@
             .img-text {
               width      : 40%;
               transition : width 0.2s linear;
-            }9
+            }
 
             &:hover {
               .img-text { width: 48%; }
